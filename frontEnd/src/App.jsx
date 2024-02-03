@@ -5,8 +5,11 @@ import BlogSearch from "./components/blogSearch";
 import "./App.css";
 import { animated, useSpring } from "react-spring";
 import SingleBlogModal from "./components/modals/singleBlogModal";
+import { SelectedSingleBlogContext } from "./components/contexts/selectedBlogContext";
 
 function App() {
+
+  const [selectedBlogSlug, setSelectedBlogSlug] = useState(null);
 
   let screenWidthInital = window.innerWidth;
   let screenHeigthInital = window.innerHeight;
@@ -40,6 +43,7 @@ function App() {
   };
 
   return (
+    <SelectedSingleBlogContext.Provider value={{selectedBlogSlug, setSelectedBlogSlug}}>
     <div className="mainConatiner">
       <BlogSearch animateSingleBlogModal={animateSingleBlogModal}/>
 
@@ -48,6 +52,7 @@ function App() {
         <SingleBlogModal animateSingleBlogModal={animateSingleBlogModal}/>
       </animated.div>
     </div>
+    </SelectedSingleBlogContext.Provider>
   );
 }
 
