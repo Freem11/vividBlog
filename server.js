@@ -30,3 +30,16 @@ app.post("/", async (req, res) => {
     res.json("error:", err);
   }
 });
+
+//Get Single Blog
+app.post("/:slug", async (req, res) => {
+  
+  console.log("server", req.body)
+
+  try {
+    const blogs = await db.getSingleBlogBySlug(req.body.slug);
+    res.json(blogs);
+  } catch (err) {
+    res.json("error:", err);
+  }
+});

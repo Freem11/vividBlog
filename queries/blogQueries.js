@@ -40,4 +40,20 @@ const getSixBlogs = (lowerLimit, upperLimit, text) => {
 
 getSixBlogs();
 
-module.exports = { getSixBlogs };
+const getSingleBlogBySlug = (slug) => {
+  console.log("query", slug)
+  return db
+    .query(
+      `SELECT * FROM Blogs WHERE slug = $1`, [slug] )
+    .then((response) => {
+      console.log("database passed:", response.rows);
+      return response.rows;
+    })
+    .catch((error) => {
+      console.log("unable to query db got error:", error);
+    });
+};
+
+getSixBlogs();
+
+module.exports = { getSixBlogs, getSingleBlogBySlug };
