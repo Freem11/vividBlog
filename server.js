@@ -24,7 +24,7 @@ app.listen(port, () => console.log("Backend server live on " + port));
 
 //Blog Routes
 
-app.get("/blogs", async (req, res) => {
+app.get("/", async (req, res) => {
   try {
     const blogs = await db.getAllBlogs();
     res.json(blogs);

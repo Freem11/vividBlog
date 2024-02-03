@@ -13,7 +13,7 @@ function App() {
       //   headers: { "Content-Type": "application/json"},
       //   body: JSON.stringify(body)
       // })
-      const response = await fetch("http://localhost:5000/blogs");
+      const response = await fetch("http://localhost:5000/");
       const data = await response.json();
       setBlogList(data);
     } catch (err) {
