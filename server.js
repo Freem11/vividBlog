@@ -14,19 +14,17 @@ app.use(cors());
 
 port = process.env.PORT || 5000;
 
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static(path.join(__dirname, "/dist")));
-// } else {
-//   app.use(express.static(path.join(__dirname, "../frontEnd/index.html")));
-// }
-
 app.listen(port, () => console.log("Backend server live on " + port));
 
 //Blog Routes
 
-app.get("/", async (req, res) => {
+//Get Pagination Blogs (6)
+app.post("/", async (req, res) => {
+  
+  console.log("server", req.body)
+
   try {
-    const blogs = await db.getSixBlogs();
+    const blogs = await db.getSixBlogs(req.body.lower, req.body.upper, req.body.text);
     res.json(blogs);
   } catch (err) {
     res.json("error:", err);

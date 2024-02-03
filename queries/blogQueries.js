@@ -1,10 +1,11 @@
 const { response } = require("express");
 const db = require("../database/db");
 
-const getSixBlogs = () => {
+const getSixBlogs = (lowerLimit, upperLimit, text) => {
+  console.log("query", lowerLimit, upperLimit, text)
   return db
     .query(
-        `SELECT 
+      `SELECT 
         * 
         FROM 
         ( 
@@ -23,8 +24,11 @@ const getSixBlogs = () => {
             ) 
             FROM Blogs
             ) x 
-            WHERE ROW_NUMBER BETWEEN 1 AND 6 AND published_at IS NOT NULL AND deleted_at IS NULL;`
-           )
+            WHERE ROW_NUMBER BETWEEN $1 AND $2 
+            AND published_at IS NOT NULL 
+            AND deleted_at IS NULL
+            AND title LIKE '%${text}%';`, [lowerLimit, upperLimit]
+    )
     .then((response) => {
       console.log("database passed:", response.rows);
       return response.rows;

@@ -1,0 +1,17 @@
+.tile {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 30vw;
+    height: 15vw;
+    background-color: white;
+    border-radius: 1rem;
+    margin: 1vw;
+}
+
+.tileText {
+    margin: 1vw;
+    font-size: 2vw;
+    color: #000;
+    font-family: Itim;
+}

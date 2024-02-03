@@ -22,7 +22,7 @@ VALUES ('My First blog', 'abqcde','this is my first blog ever!', 'imageFile',  '
 ('My 14th blog', '58673827','this is my 14th blog ever!', 'imageFile67',  '2024-04-14', '2024-04-04', '2024-04-12', null ),
 ('My 15th blog', 'd7328n0k','this is my 15th blog ever!', 'imageFile89',  '2024-05-16', '2024-05-05', '2024-05-06', null ),
 ('My 16th blog', '06903nd','this is my 16th blog ever!', 'imageFile901',  '2024-06-01', '2024-05-11', '2024-05-23', null ),
-('My seventeenth 2748dbi', 'abcde','this is my seventeenth blog ever!', 'imageFile11',  '2024-07-01', '2024-06-04', '2024-06-21', null ),
+('My seventeenth blog', '2748dbi','this is my seventeenth blog ever!', 'imageFile11',  '2024-07-01', '2024-06-04', '2024-06-21', null ),
 ('My 18th blog', 'dhfhrw7383','this is my 18th blog ever!', 'imageFile55',  '2024-07-19', '2024-07-11', '2024-07-17', null )
 
 
