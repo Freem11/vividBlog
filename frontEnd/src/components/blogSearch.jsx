@@ -5,7 +5,8 @@ import BlogTile from "./blogTile";
 import rightArrow from "../images/right-arrow.png";
 import "./blogSearch.css";
 
-function BlogSearch() {
+function BlogSearch(props) {
+  const { animateSingleBlogModal } = props
   const [blogList, setBlogList] = useState([]);
   const [limits, setLimits] = useState({ upper: 6, lower: 1, text: "" });
   const [direction, setDirection] = useState("");
@@ -84,7 +85,7 @@ function BlogSearch() {
         <div className="tileZone">
           {blogList &&
             blogList.map((blog) => {
-              return <BlogTile key={blog.id} blogInfo={blog} />;
+              return <BlogTile key={blog.id} blogInfo={blog} animateSingleBlogModal={animateSingleBlogModal}/>;
             })}
         </div>
         <div className="arrowWrapperRight" onClick={shiftRight}>

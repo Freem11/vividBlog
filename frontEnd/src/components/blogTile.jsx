@@ -1,11 +1,13 @@
 import React from 'react'
 import "./blogTile.css"
 
-function BlogTile(blogInfo) {
+function BlogTile(props) {
+    const { blogInfo, animateSingleBlogModal } = props
+
     return (
-        <div className="tile">
-            <p className="tileText">{blogInfo.blogInfo.title}</p>
-            <p className="tileText">Posted: {blogInfo.blogInfo.published_at}</p>
+        <div className="tile" onClick={() => animateSingleBlogModal()}>
+            <p className="tileText">{blogInfo.title}</p>
+            <p className="tileText">Posted: {blogInfo.published_at}</p>
         </div>
     )
 }

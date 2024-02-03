@@ -1,0 +1,22 @@
+
+.modalBodyContainer{
+    display: flex;
+    height: 93%;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 5%;
+    background-color: plum;
+}
+
+.xBtn {
+    background-color: pink;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    border-radius: 4vw;
+    width: 5vw;
+    height: 5vw;
+    position: absolute;
+    top: 3vh;
+    left: 70vw;
+}
