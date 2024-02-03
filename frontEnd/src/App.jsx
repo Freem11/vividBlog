@@ -44,7 +44,7 @@ function App() {
 
   return (
     <SelectedSingleBlogContext.Provider value={{selectedBlogSlug, setSelectedBlogSlug}}>
-    <div className="mainConatiner">
+    <div className="mainContainer">
       <BlogSearch animateSingleBlogModal={animateSingleBlogModal}/>
 
 

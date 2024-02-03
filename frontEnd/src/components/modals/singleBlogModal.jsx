@@ -1,32 +1,54 @@
 import React from "react";
 import { useContext, useEffect, useState } from "react";
+import BlogTile from "../blogTile";
 import xButton from "../../images/close.png";
 import "./singleBlogModal.css";
 import { SelectedSingleBlogContext } from "../contexts/selectedBlogContext";
 
 function SingleBlogModal(props) {
-    const { animateSingleBlogModal } = props
-    const { selectedBlogSlug, setSelectedBlogSlug } = useContext(SelectedSingleBlogContext);
-    const [selectedBlog, setSelectedBlog] = useState([]);
-    console.log("passing", selectedBlogSlug)
+  const { animateSingleBlogModal } = props;
+  const { selectedBlogSlug, setSelectedBlogSlug } = useContext(
+    SelectedSingleBlogContext
+  );
+  const [selectedBlog, setSelectedBlog] = useState([]);
+  const [relatedBlogs, setRelatedBlogs] = useState([]);
+  console.log("passing", selectedBlogSlug);
 
-    const getSingleBlogBySlug = async () => {
-      try {
-        const response = await fetch(`http://localhost:5000/${selectedBlogSlug}`, {
+  const getSingleBlogBySlug = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:5000/${selectedBlogSlug}`,
+        {
           method: "GET",
           headers: { "content-type": "application/json" },
-        });
-        const data = await response.json();
-        setSelectedBlog(data)
-  
-      } catch (err) {
-        console.log("error", err);
-      }
-    };
+        }
+      );
+      const data = await response.json();
+      setSelectedBlog(data[0]);
+    } catch (err) {
+      console.log("error", err);
+    }
+  };
 
-    useEffect(() => {
+  const getRelatedBlogs = async () => {
+    try {
+      const response = await fetch(`http://localhost:5000/related`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+      });
+      const data = await response.json();
+      setRelatedBlogs(data);
+    } catch (err) {
+      console.log("error", err);
+    }
+  };
+
+  useEffect(() => {
+    if (selectedBlogSlug) {
       getSingleBlogBySlug();
-    }, [selectedBlogSlug]);
+      getRelatedBlogs();
+    }
+  }, [selectedBlogSlug]);
 
   return (
     <div className="modalBodyContainer">
@@ -40,11 +62,26 @@ function SingleBlogModal(props) {
           }}
         />
       </div>
-          <div>
-            <h3>{selectedBlog[0].title}</h3>
-        <p>{selectedBlog[0].content}</p>
-          </div>
+      <div className="topSection">
+        <h3 className="tileText">{selectedBlog.title}</h3>
+        <p className="tileText">{selectedBlog.content}</p>
+      </div>
 
+      <div className="lowSection">
+        <h4 className="tileText">Other blogs you may like</h4>
+        <div className="tileZone2">
+          {relatedBlogs &&
+            relatedBlogs.map((blog) => {
+              return (
+                <BlogTile
+                  key={blog.id}
+                  blogInfo={blog}
+                  animateSingleBlogModal={animateSingleBlogModal}
+                />
+              );
+            })}
+        </div>
+      </div>
     </div>
   );
 }

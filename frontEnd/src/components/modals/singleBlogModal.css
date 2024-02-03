@@ -1,6 +1,6 @@
 
 .modalBodyContainer{
-    display: flex;
+    /* display: flex; */
     height: 93%;
     width: 90%;
     margin-left: 5%;
@@ -19,4 +19,23 @@
     position: absolute;
     top: 3vh;
     left: 70vw;
+}
+
+.topSection{
+    width: 100%;
+    height: 20vh;
+}
+
+.lowSection {
+    margin-top: 20vh;
+}
+
+
+.tileZone2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    background-color: blue;
 }
