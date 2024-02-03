@@ -26,7 +26,7 @@ app.listen(port, () => console.log("Backend server live on " + port));
 
 app.get("/", async (req, res) => {
   try {
-    const blogs = await db.getAllBlogs();
+    const blogs = await db.getSixBlogs();
     res.json(blogs);
   } catch (err) {
     res.json("error:", err);

@@ -33,7 +33,7 @@ function App() {
             <div key={blog.id}>
               <p>Title: {blog.title}</p>
               <p>Word Salad: {blog.content}</p>
-              <p>Created: {blog.created_at}</p>
+              <p>Posted: {blog.published_at}</p>
             </div>
           );
         })}
