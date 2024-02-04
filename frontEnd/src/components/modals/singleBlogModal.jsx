@@ -5,12 +5,16 @@ import xButton from "../../images/close.png";
 import "./singleBlogModal.css";
 import { SelectedSingleBlogContext } from "../contexts/selectedBlogContext";
 import { MessageContext } from "../contexts/messageContext";
+import { ConfirmationTypeContext } from "../contexts/confirmationTypeContext";
 
 function SingleBlogModal(props) {
   const { animateSingleBlogModal, animateSuccessModal } = props;
   const { message, setMessage } = useContext(MessageContext);
   const { selectedBlogSlug, setSelectedBlogSlug } = useContext(
     SelectedSingleBlogContext
+  );
+  const { confirmationType, setConfirmationType } = useContext(
+    ConfirmationTypeContext
   );
   const [selectedBlog, setSelectedBlog] = useState([]);
   const [relatedBlogs, setRelatedBlogs] = useState([]);
@@ -53,6 +57,7 @@ function SingleBlogModal(props) {
   }, [selectedBlogSlug]);
 
   const delteConfirm = () => {
+    setConfirmationType(2)
     setMessage(`Are you sure you want to delete "${selectedBlog.title}"?`)
     animateSuccessModal()
   }

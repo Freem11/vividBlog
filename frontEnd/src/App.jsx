@@ -9,10 +9,12 @@ import NewBlogModal from "./components/modals/newBlogModal";
 import ConfirmationModal from "./components/modals/confimationModal";
 import { SelectedSingleBlogContext } from "./components/contexts/selectedBlogContext";
 import { MessageContext } from "./components/contexts/messageContext";
+import { ConfirmationTypeContext } from "./components/contexts/confirmationTypeContext";
 
 function App() {
   const [selectedBlogSlug, setSelectedBlogSlug] = useState(null);
   const [message, setMessage] = useState("");
+  const [confirmationType, setConfirmationType] = useState(1);
 
   let screenWidthInital = window.innerWidth;
   let screenHeigthInital = window.innerHeight;
@@ -79,37 +81,39 @@ function App() {
   };
 
   return (
-    <MessageContext.Provider value={{ message, setMessage }}>
-      <SelectedSingleBlogContext.Provider
-        value={{ selectedBlogSlug, setSelectedBlogSlug }}
-      >
-        <div className="mainContainer">
-          <BlogSearch
-            animateSingleBlogModal={animateSingleBlogModal}
-            animateNewBlogModal={animateNewBlogModal}
-            animateSuccessModal={animateSuccessModal}
-          />
-
-          <animated.div className="viewBlog" style={moveSingleBlogModal}>
-            <SingleBlogModal
+    <ConfirmationTypeContext.Provider value={{confirmationType, setConfirmationType}}>
+      <MessageContext.Provider value={{ message, setMessage }}>
+        <SelectedSingleBlogContext.Provider
+          value={{ selectedBlogSlug, setSelectedBlogSlug }}
+        >
+          <div className="mainContainer">
+            <BlogSearch
               animateSingleBlogModal={animateSingleBlogModal}
-              animateSuccessModal={animateSuccessModal}
-            />
-          </animated.div>
-
-          <animated.div className="newBlog" style={moveNewBlogModal}>
-            <NewBlogModal
               animateNewBlogModal={animateNewBlogModal}
               animateSuccessModal={animateSuccessModal}
             />
-          </animated.div>
 
-          <animated.div className="successModal" style={moveSucessModal}>
-            <ConfirmationModal animateSuccessModal={animateSuccessModal} />
-          </animated.div>
-        </div>
-      </SelectedSingleBlogContext.Provider>
-    </MessageContext.Provider>
+            <animated.div className="viewBlog" style={moveSingleBlogModal}>
+              <SingleBlogModal
+                animateSingleBlogModal={animateSingleBlogModal}
+                animateSuccessModal={animateSuccessModal}
+              />
+            </animated.div>
+
+            <animated.div className="newBlog" style={moveNewBlogModal}>
+              <NewBlogModal
+                animateNewBlogModal={animateNewBlogModal}
+                animateSuccessModal={animateSuccessModal}
+              />
+            </animated.div>
+
+            <animated.div className="successModal" style={moveSucessModal}>
+              <ConfirmationModal animateSuccessModal={animateSuccessModal} />
+            </animated.div>
+          </div>
+        </SelectedSingleBlogContext.Provider>
+      </MessageContext.Provider>
+    </ConfirmationTypeContext.Provider>
   );
 }
 
