@@ -81,7 +81,9 @@ function App() {
   };
 
   return (
-    <ConfirmationTypeContext.Provider value={{confirmationType, setConfirmationType}}>
+    <ConfirmationTypeContext.Provider
+      value={{ confirmationType, setConfirmationType }}
+    >
       <MessageContext.Provider value={{ message, setMessage }}>
         <SelectedSingleBlogContext.Provider
           value={{ selectedBlogSlug, setSelectedBlogSlug }}
@@ -91,6 +93,9 @@ function App() {
               animateSingleBlogModal={animateSingleBlogModal}
               animateNewBlogModal={animateNewBlogModal}
               animateSuccessModal={animateSuccessModal}
+              singleBlogYCoord={singleBlogYCoord}
+              newBlogYCoord={newBlogYCoord}
+              successYCoord={successYCoord}
             />
 
             <animated.div className="viewBlog" style={moveSingleBlogModal}>
@@ -108,7 +113,11 @@ function App() {
             </animated.div>
 
             <animated.div className="successModal" style={moveSucessModal}>
-              <ConfirmationModal animateSuccessModal={animateSuccessModal} />
+              <ConfirmationModal
+                animateSuccessModal={animateSuccessModal}
+                setSingleBlogYCoord={setSingleBlogYCoord}
+                setNewBlogYCoord={setNewBlogYCoord}
+              />
             </animated.div>
           </div>
         </SelectedSingleBlogContext.Provider>

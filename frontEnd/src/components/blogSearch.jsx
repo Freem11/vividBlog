@@ -6,7 +6,13 @@ import rightArrow from "../images/right-arrow.png";
 import "./blogSearch.css";
 
 function BlogSearch(props) {
-  const { animateSingleBlogModal, animateNewBlogModal } = props;
+  const {
+    animateSingleBlogModal,
+    animateNewBlogModal,
+    singleBlogYCoord,
+    newBlogYCoord,
+    successYCoord,
+  } = props;
   const [blogList, setBlogList] = useState([]);
   const [limits, setLimits] = useState({ upper: 6, lower: 1, text: "" });
   const [direction, setDirection] = useState("");
@@ -52,6 +58,10 @@ function BlogSearch(props) {
     pullAllBlogs();
   }, [limits]);
 
+  useEffect(() => {
+    pullAllBlogs();
+  }, [singleBlogYCoord, newBlogYCoord, successYCoord]);
+
   const handleChange = async (e) => {
     console.log(e.target.value);
     setLimits({ ...limits, text: e.target.value });
@@ -78,11 +88,8 @@ function BlogSearch(props) {
           onChange={handleChange}
         />
 
-        <div
-          onClick={() => animateNewBlogModal()}
-          className="newBlogButton"
-        >
-            <p>Compose</p>
+        <div onClick={() => animateNewBlogModal()} className="newBlogButton">
+          <p>Compose</p>
         </div>
       </div>
 

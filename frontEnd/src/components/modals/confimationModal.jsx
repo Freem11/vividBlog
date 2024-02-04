@@ -7,7 +7,7 @@ import { ConfirmationTypeContext } from "../contexts/confirmationTypeContext";
 import { getToday } from "../../helpers/dateFormatingHelper";
 
 function ConfirmationModal(props) {
-  const { animateSuccessModal } = props;
+  const { animateSuccessModal, setSingleBlogYCoord, setNewBlogYCoord } = props;
   const { message, setMessage } = useContext(MessageContext);
   const { selectedBlogSlug } = useContext(SelectedSingleBlogContext);
   const { confirmationType, setConfirmationType } = useContext(ConfirmationTypeContext);
@@ -43,6 +43,12 @@ function ConfirmationModal(props) {
     }
   };
 
+  const cleanupModals = async () => {
+    animateSuccessModal()
+    setSingleBlogYCoord(0)
+    setNewBlogYCoord(0)
+  }
+
   return (
     <div className="modalBodyContainer">
       <div className="topSection">
@@ -51,7 +57,7 @@ function ConfirmationModal(props) {
 
       {confirmationType === 1 ? (
         <div className="submitSection">
-          <div className="submitBtn" onClick={() => animateSuccessModal()}>
+          <div className="submitBtn" onClick={() => cleanupModals()}>
             <p>Ok</p>
           </div>
         </div>
