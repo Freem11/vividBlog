@@ -33,6 +33,7 @@
     top: 3vh;
     left: 70vw;
     color: #000;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
 }
 
 .topSection{
@@ -87,4 +88,39 @@
     padding-top: 1vw;
     padding-left: 2vw;
     
+}
+
+.submitSection {
+    background-color: orange;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.submitBtn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background-color: green;
+      width: 10vw;
+      font-family: Itim;
+      border-radius: 1rem;
+      padding-top: 1vw;
+      padding-bottom: 1vw;
+      box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
+}
+
+.cancelBtn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: maroon;
+    width: 10vw;
+    font-family: Itim;
+    border-radius: 1rem;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
 }

@@ -6,10 +6,13 @@ import "./App.css";
 import { animated, useSpring } from "react-spring";
 import SingleBlogModal from "./components/modals/singleBlogModal";
 import NewBlogModal from "./components/modals/newBlogModal";
+import ConfirmationModal from "./components/modals/confimationModal";
 import { SelectedSingleBlogContext } from "./components/contexts/selectedBlogContext";
+import { MessageContext } from "./components/contexts/messageContext";
 
 function App() {
   const [selectedBlogSlug, setSelectedBlogSlug] = useState(null);
+  const [message, setMessage] = useState("");
 
   let screenWidthInital = window.innerWidth;
   let screenHeigthInital = window.innerHeight;
@@ -25,6 +28,7 @@ function App() {
   }
   const [singleBlogYCoord, setSingleBlogYCoord] = useState(0);
   const [newBlogYCoord, setNewBlogYCoord] = useState(0);
+  const [successYCoord, setSuccessYCoord] = useState(0);
 
   const moveSingleBlogModal = useSpring({
     from: { transform: `translate3d(0,0,0)` },
@@ -32,7 +36,8 @@ function App() {
   });
 
   const animateSingleBlogModal = () => {
-    let blueSectionHeight = document.getElementsByClassName("viewBlog")[0].clientHeight;
+    let blueSectionHeight = document.getElementsByClassName("viewBlog")[0]
+      .clientHeight;
 
     if (singleBlogYCoord === 0) {
       setSingleBlogYCoord(-windowHeight / 2 - blueSectionHeight / 2);
@@ -47,7 +52,8 @@ function App() {
   });
 
   const animateNewBlogModal = () => {
-    let blueSectionHeight = document.getElementsByClassName("newBlog")[0].clientHeight;
+    let blueSectionHeight = document.getElementsByClassName("newBlog")[0]
+      .clientHeight;
 
     if (newBlogYCoord === 0) {
       setNewBlogYCoord(-windowHeight / 2 - blueSectionHeight / 2);
@@ -55,27 +61,52 @@ function App() {
       setNewBlogYCoord(0);
     }
   };
-  
+
+  const moveSucessModal = useSpring({
+    from: { transform: `translate3d(0,0,0)` },
+    to: { transform: `translate3d(0,${successYCoord}px,0)` },
+  });
+
+  const animateSuccessModal = () => {
+    let blueSectionHeight = document.getElementsByClassName("successModal")[0]
+      .clientHeight;
+
+    if (successYCoord === 0) {
+      setSuccessYCoord(-windowHeight / 2 - blueSectionHeight / 2);
+    } else {
+      setSuccessYCoord(0);
+    }
+  };
 
   return (
-    <SelectedSingleBlogContext.Provider
-      value={{ selectedBlogSlug, setSelectedBlogSlug }}
-    >
-      <div className="mainContainer">
-        <BlogSearch
-          animateSingleBlogModal={animateSingleBlogModal}
-          animateNewBlogModal={animateNewBlogModal}
-        />
+    <MessageContext.Provider value={{ message, setMessage }}>
+      <SelectedSingleBlogContext.Provider
+        value={{ selectedBlogSlug, setSelectedBlogSlug }}
+      >
+        <div className="mainContainer">
+          <BlogSearch
+            animateSingleBlogModal={animateSingleBlogModal}
+            animateNewBlogModal={animateNewBlogModal}
+            animateSuccessModal={animateSuccessModal}
+          />
 
-        <animated.div className="viewBlog" style={moveSingleBlogModal}>
-          <SingleBlogModal animateSingleBlogModal={animateSingleBlogModal} />
-        </animated.div>
+          <animated.div className="viewBlog" style={moveSingleBlogModal}>
+            <SingleBlogModal animateSingleBlogModal={animateSingleBlogModal} />
+          </animated.div>
 
-        <animated.div className="newBlog" style={moveNewBlogModal}>
-          <NewBlogModal animateNewBlogModal={animateNewBlogModal} />
-        </animated.div>
-      </div>
-    </SelectedSingleBlogContext.Provider>
+          <animated.div className="newBlog" style={moveNewBlogModal}>
+            <NewBlogModal
+              animateNewBlogModal={animateNewBlogModal}
+              animateSuccessModal={animateSuccessModal}
+            />
+          </animated.div>
+
+          <animated.div className="successModal" style={moveSucessModal}>
+            <ConfirmationModal animateSuccessModal={animateSuccessModal} />
+          </animated.div>
+        </div>
+      </SelectedSingleBlogContext.Provider>
+    </MessageContext.Provider>
   );
 }
 
