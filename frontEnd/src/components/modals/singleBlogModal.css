@@ -1,11 +1,16 @@
 
 .modalBodyContainer{
     /* display: flex; */
-    height: 93%;
+    height: 80%;
     width: 90%;
     margin-left: 5%;
     margin-top: 5%;
-    background-color: plum;
+    background-color: lightskyblue;
+}
+
+.headerText{
+    font-size: 4vw;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
 }
 
 .xBtn {
@@ -19,6 +24,7 @@
     position: absolute;
     top: 3vh;
     left: 70vw;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
 }
 
 .xBtn2 {
@@ -56,9 +62,27 @@
 }
 
 .bottomSection{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1vh;
     width: 100%;
-    height: 70vh;
-    background-color: lightgreen;
+    height: 50vh;
+    /* background-color: green; */
+}
+
+.inputHodler {
+    margin-top: 3vh;
+    margin-bottom: -5vh;
+
+}
+
+.searchInput2{
+    background-color: white;
+    border-radius: 1rem;
+    width: 30vw;
+    height: 3vh;
 }
 
 .inputContainer {
@@ -66,17 +90,29 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    height: 5vh;
+    height: 9vh;
+    width: 60vw;
+    /* background-color: lightslategray; */
 }
 
 .inputContainerContent {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    background-color: lightsalmon;
+    align-items: center;
     height: 50vh;
     width: 100%;
+}
+
+.formLabels {
+    font-size: 3vw;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+    margin-right: 6vw;
+}
+
+.formLabels2 {
+    font-size: 3vw;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
 }
 
 .searchInputContent {
@@ -87,14 +123,14 @@
     border-radius: 1rem;
     padding-top: 1vw;
     padding-left: 2vw;
-    
+    margin-top: -2vh;  
 }
 
 .submitSection {
-    background-color: orange;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    margin-top: 10vh;
 }
 
 .submitBtn {
@@ -104,12 +140,12 @@
       justify-content: center;
       text-align: center;
       background-color: green;
-      width: 10vw;
-      font-family: Itim;
+      width: 15vw;
+      height: 5vh;
+      font-size: 2vw;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
       border-radius: 1rem;
-      padding-top: 1vw;
-      padding-bottom: 1vw;
-      box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
+      box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
 
 .cancelBtn {
@@ -119,8 +155,10 @@
     justify-content: center;
     text-align: center;
     background-color: maroon;
-    width: 10vw;
-    font-family: Itim;
+    width: 15vw;
+    height: 5vh;
+    font-size: 2vw;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
     border-radius: 1rem;
-    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
 }

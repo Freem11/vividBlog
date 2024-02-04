@@ -1,21 +1,20 @@
 .blogSearchContainer {
     display: flex;
     flex-direction: column;
-    align-self: center;
-    align-items: center;
-    justify-content: center;
+    margin-top: 10vh;
     width: 90vw;
     height: 90vh;
-    background-color: green;
+    background-color: powderblue;
 }
 
 .searchBox {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
+    margin-left: 10vw;
     width: 70vw;
-    background-color: hotpink;
+    background-color: powderblue;
 }
 
 .searchText {
@@ -29,8 +28,8 @@
     height: 50%;
     width: 35%;
     border-radius: 1.5rem;
-    margin-left: 3vw;
-    padding-left: 6vw;
+    margin-left: -3vw;
+    padding-left: 3vw;
 }
 
 .newBlogButton{
@@ -38,13 +37,15 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    background-color: lightblue;
+    background-color: mediumseagreen;
     border-radius: 1rem;
     margin-left: 3vw;
     margin-right: -2vw;
     height: 3vh;
-    padding: 0.75vw;
+    width: 10vw;
+    padding: 0.5vw;
     box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
 }
 
 .controls{
@@ -52,7 +53,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-color: gray;
+    background-color: powderblue;
 }
 
 .tileZone {
@@ -62,7 +63,9 @@
     flex-wrap: wrap;
     flex-direction: row;
     width: 70vw;
-    background-color: pink;
+    background-color: powderblue;
+    border: 0.5vw solid gray;
+    border-radius: 1rem;
 }
 
 .arrowWrapperRight{

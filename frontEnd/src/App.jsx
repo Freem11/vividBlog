@@ -38,11 +38,11 @@ function App() {
   });
 
   const animateSingleBlogModal = () => {
-    let blueSectionHeight = document.getElementsByClassName("viewBlog")[0]
+    let modalHeight = document.getElementsByClassName("viewBlog")[0]
       .clientHeight;
 
     if (singleBlogYCoord === 0) {
-      setSingleBlogYCoord(-windowHeight / 2 - blueSectionHeight / 2);
+      setSingleBlogYCoord(-windowHeight / 2 - modalHeight / 2);
     } else {
       setSingleBlogYCoord(0);
     }
@@ -54,11 +54,11 @@ function App() {
   });
 
   const animateNewBlogModal = () => {
-    let blueSectionHeight = document.getElementsByClassName("newBlog")[0]
+    let modalHeight = document.getElementsByClassName("newBlog")[0]
       .clientHeight;
 
     if (newBlogYCoord === 0) {
-      setNewBlogYCoord(-windowHeight / 2 - blueSectionHeight / 2);
+      setNewBlogYCoord(-windowHeight / 2 - modalHeight / 2);
     } else {
       setNewBlogYCoord(0);
     }
@@ -70,11 +70,11 @@ function App() {
   });
 
   const animateSuccessModal = () => {
-    let blueSectionHeight = document.getElementsByClassName("successModal")[0]
+    let modalHeight = document.getElementsByClassName("successModal")[0]
       .clientHeight;
 
     if (successYCoord === 0) {
-      setSuccessYCoord(-windowHeight / 2 - blueSectionHeight / 2);
+      setSuccessYCoord(-windowHeight / 2 - modalHeight / 2);
     } else {
       setSuccessYCoord(0);
     }

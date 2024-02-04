@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import BlogTile from "./blogTile";
+import Button from "./button";
 import rightArrow from "../images/right-arrow.png";
 import "./blogSearch.css";
 import { getSixBlog } from "../../fetchRequests/blogRoutes";
@@ -47,11 +48,7 @@ function BlogSearch(props) {
 
   useEffect(() => {
     pullAllBlogs();
-  }, [limits]);
-
-  useEffect(() => {
-    pullAllBlogs();
-  }, [singleBlogYCoord, newBlogYCoord, successYCoord]);
+  }, [limits, singleBlogYCoord, newBlogYCoord, successYCoord]);
 
   const handleChange = async (e) => {
     setLimits({ ...limits, text: e.target.value });
@@ -67,6 +64,8 @@ function BlogSearch(props) {
     setDirection("minus");
   };
 
+  let label = "Compose"
+
   return (
     <div className="blogSearchContainer">
       <div className="searchBox">
@@ -77,7 +76,6 @@ function BlogSearch(props) {
           value={limits.text}
           onChange={handleChange}
         />
-
         <div onClick={() => animateNewBlogModal()} className="newBlogButton">
           <p>Compose</p>
         </div>

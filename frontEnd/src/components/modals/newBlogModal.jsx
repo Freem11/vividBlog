@@ -80,6 +80,7 @@ function NewBlogModal(props) {
 
   return (
     <div className="modalBodyContainer">
+      <h1 className="headerText">Create a new blog</h1>
       <div className="xBtn2" onClick={() => handleClose()}>
         <img
           src={xButton}
@@ -91,30 +92,32 @@ function NewBlogModal(props) {
         />
       </div>
       <div className="bottomSection">
+        <div className="inputHodler">
         <div className="inputContainer">
-          <p>Title:</p>
+          <p  className="formLabels">Title:</p>
           <input
             type="text"
             name="title"
-            className="searchInput"
+            className="searchInput2"
             value={newBlogInfo.title}
             onChange={handleChange}
           />
         </div>
 
         <div className="inputContainer">
-          <p>Image:</p>
+          <p className="formLabels">Image:</p>
           <input
             type="text"
             name="image"
-            className="searchInput"
+            className="searchInput2"
             value={newBlogInfo.image}
             onChange={handleChange}
           />
         </div>
+        </div>
 
         <div className="inputContainerContent">
-          <p>Content:</p>
+          <p className="formLabels2">Enter Your Content:</p>
           <textarea
             type="text"
             name="content"
@@ -131,7 +134,7 @@ function NewBlogModal(props) {
         </div>
 
         <div className="cancelBtn" onClick={() => handleClose()}>
-          <p>Cancel Submission</p>
+          <p>Cancel Blog Post</p>
         </div>
       </div>
     </div>

@@ -14,7 +14,8 @@ body {
 .newBlog {
   height: 80vh;
   width: 80vw;
-  background-color: powderblue;
+  background-color: lightskyblue;
+  border: 0.25vw solid lightgray;
   position: absolute;
   top: 100vh;
   left: 10vw;
@@ -24,7 +25,8 @@ body {
 .viewBlog {
   height: 80vh;
   width: 80vw;
-  background-color: powderblue;
+  background-color: lightskyblue;
+  border: 0.25vw solid lightgray;
   position: absolute;
   top: 100vh;
   left: 10vw;
@@ -34,7 +36,8 @@ body {
 .successModal{
   height: 40vh;
   width: 50vw;
-  background-color: powderblue;
+  background-color: lightskyblue;
+  border: 0.25vw solid lightgray;
   position: absolute;
   top: 100vh;
   left: 25vw;
