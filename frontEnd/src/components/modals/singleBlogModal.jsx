@@ -4,9 +4,11 @@ import BlogTile from "../blogTile";
 import xButton from "../../images/close.png";
 import "./singleBlogModal.css";
 import { SelectedSingleBlogContext } from "../contexts/selectedBlogContext";
+import { MessageContext } from "../contexts/messageContext";
 
 function SingleBlogModal(props) {
-  const { animateSingleBlogModal } = props;
+  const { animateSingleBlogModal, animateSuccessModal } = props;
+  const { message, setMessage } = useContext(MessageContext);
   const { selectedBlogSlug, setSelectedBlogSlug } = useContext(
     SelectedSingleBlogContext
   );
@@ -50,8 +52,16 @@ function SingleBlogModal(props) {
     }
   }, [selectedBlogSlug]);
 
+  const delteConfirm = () => {
+    setMessage(`Are you sure you want to delete "${selectedBlog.title}"?`)
+    animateSuccessModal()
+  }
+
   return (
     <div className="modalBodyContainer">
+      <div onClick={() => delteConfirm()} className="deleteBlogButton">
+          <p>Delete</p>
+        </div>
       <div className="xBtn" onClick={() => animateSingleBlogModal()}>
         <img
           src={xButton}

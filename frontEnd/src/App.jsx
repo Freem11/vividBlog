@@ -91,7 +91,10 @@ function App() {
           />
 
           <animated.div className="viewBlog" style={moveSingleBlogModal}>
-            <SingleBlogModal animateSingleBlogModal={animateSingleBlogModal} />
+            <SingleBlogModal
+              animateSingleBlogModal={animateSingleBlogModal}
+              animateSuccessModal={animateSuccessModal}
+            />
           </animated.div>
 
           <animated.div className="newBlog" style={moveNewBlogModal}>

@@ -10,9 +10,40 @@
     cursor: pointer;
 }
 
+.tileTopRow {
+    /* background-color: mediumblue; */
+    display: flex;
+    flex-direction: row;
+}
+
 .tileText {
+    margin: 1vw;
+    font-size: 2vw;
+    width: 20vw;
+    color: #000;
+    font-family: Itim;
+    /* background-color: maroon; */
+}
+
+.dateText {
     margin: 1vw;
     font-size: 2vw;
     color: #000;
     font-family: Itim;
+    /* background-color: maroon; */
+}
+
+.deleteBlogButton{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: maroon;
+    border-radius: 1rem;
+    margin-top: 0.5vh;
+    margin-left: 24vw;
+    height: 1.5vh;
+    padding: 0.75vw;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
 }

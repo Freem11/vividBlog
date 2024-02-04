@@ -1,24 +1,27 @@
-import React from 'react'
+import React from "react";
 import { useContext } from "react";
-import "./blogTile.css"
+import "./blogTile.css";
 import { SelectedSingleBlogContext } from "../components/contexts/selectedBlogContext";
 
-
 function BlogTile(props) {
-    const { blogInfo, animateSingleBlogModal } = props
-    const { selectedBlogSlug, setSelectedBlogSlug } = useContext(SelectedSingleBlogContext);
+  const { blogInfo, animateSingleBlogModal } = props;
+  const { selectedBlogSlug, setSelectedBlogSlug } = useContext(
+    SelectedSingleBlogContext
+  );
 
-    const setupSingleBlog = () => {
-        setSelectedBlogSlug(blogInfo.slug)
-        animateSingleBlogModal()  
-    }
+  const setupSingleBlog = () => {
+    setSelectedBlogSlug(blogInfo.slug);
+    animateSingleBlogModal();
+  };
 
-    return (
-        <div className="tile" onClick={() => setupSingleBlog()}>
-            <p className="tileText">{blogInfo.title}</p>
-            <p className="tileText">Posted: {blogInfo.published_at}</p>
-        </div>
-    )
+  return (
+    <div className="tile" onClick={() => setupSingleBlog()}>
+      <div className="tileTopRow">
+        <p className="tileText">{blogInfo.title}</p>
+      </div>
+      <p className="dateText">Posted: {blogInfo.published_at}</p>
+    </div>
+  );
 }
 
-export default BlogTile
+export default BlogTile;
