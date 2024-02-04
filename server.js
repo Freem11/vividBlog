@@ -32,12 +32,23 @@ app.post("/", async (req, res) => {
 });
 
 //Get Single Blog
-app.post("/:slug", async (req, res) => {
+app.get("/:slug", async (req, res) => {
   
-  console.log("server", req.body)
+  console.log("server", req.params.slug)
 
   try {
-    const blogs = await db.getSingleBlogBySlug(req.body.slug);
+    const blogs = await db.getSingleBlogBySlug(req.params.slug);
+    res.json(blogs);
+  } catch (err) {
+    res.json("error:", err);
+  }
+});
+
+//Get Single Blog
+app.post("/related", async (req, res) => {
+  
+  try {
+    const blogs = await db.getFourBlogs();
     res.json(blogs);
   } catch (err) {
     res.json("error:", err);

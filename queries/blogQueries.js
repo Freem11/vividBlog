@@ -2,7 +2,7 @@ const { response } = require("express");
 const db = require("../database/db");
 
 const getSixBlogs = (lowerLimit, upperLimit, text) => {
-  console.log("query", lowerLimit, upperLimit, text)
+  // console.log("query", lowerLimit, upperLimit, text);
   return db
     .query(
       `SELECT 
@@ -27,7 +27,8 @@ const getSixBlogs = (lowerLimit, upperLimit, text) => {
             WHERE ROW_NUMBER BETWEEN $1 AND $2 
             AND published_at IS NOT NULL 
             AND deleted_at IS NULL
-            AND title LIKE '%${text}%';`, [lowerLimit, upperLimit]
+            AND title LIKE '%${text}%';`,
+      [lowerLimit, upperLimit]
     )
     .then((response) => {
       console.log("database passed:", response.rows);
@@ -41,10 +42,9 @@ const getSixBlogs = (lowerLimit, upperLimit, text) => {
 getSixBlogs();
 
 const getSingleBlogBySlug = (slug) => {
-  console.log("query", slug)
+  console.log("query", slug);
   return db
-    .query(
-      `SELECT * FROM Blogs WHERE slug = $1`, [slug] )
+    .query(`SELECT * FROM Blogs WHERE slug = $1`, [slug]) 
     .then((response) => {
       console.log("database passed:", response.rows);
       return response.rows;
@@ -56,4 +56,18 @@ const getSingleBlogBySlug = (slug) => {
 
 getSixBlogs();
 
-module.exports = { getSixBlogs, getSingleBlogBySlug };
+const getFourBlogs = () => {
+  return db
+    .query(`SELECT * FROM (SELECT * FROM Blogs ORDER BY RANDOM() LIMIT 4)x ORDER BY published_at DESC`)
+    .then((response) => {
+      // console.log("database passed:", response.rows);
+      return response.rows;
+    })
+    .catch((error) => {
+      console.log("unable to query db got error:", error);
+    });
+};
+
+getFourBlogs();
+
+module.exports = { getSixBlogs, getSingleBlogBySlug, getFourBlogs };
