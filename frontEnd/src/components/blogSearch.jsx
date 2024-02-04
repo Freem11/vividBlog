@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import BlogTile from "./blogTile";
 import rightArrow from "../images/right-arrow.png";
 import "./blogSearch.css";
+import { getSixBlog } from "../../fetchRequests/blogRoutes";
 
 function BlogSearch(props) {
   const {
@@ -18,16 +19,10 @@ function BlogSearch(props) {
   const [direction, setDirection] = useState("");
 
   const pullAllBlogs = async () => {
-    try {
-      const response = await fetch("http://localhost:5000/", {
-        method: "POST",
-        body: JSON.stringify(limits),
-        headers: { "content-type": "application/json" },
-      });
-      const data = await response.json();
 
-      //check if at begining or end of data
-      if (data.length === 0) {
+    let sixBlogs = await getSixBlog(limits)
+    if (sixBlogs) {
+      if (sixBlogs.length === 0) {
         direction === "plus"
           ? setLimits({
               ...limits,
@@ -40,12 +35,9 @@ function BlogSearch(props) {
               lower: limits.lower + 6,
             });
       } else {
-        setBlogList(data);
+        setBlogList(sixBlogs);
       }
-
       setDirection("");
-    } catch (err) {
-      console.log("error", err);
     }
   };
 

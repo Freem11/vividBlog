@@ -6,6 +6,7 @@ import "./singleBlogModal.css";
 import { SelectedSingleBlogContext } from "../contexts/selectedBlogContext";
 import { MessageContext } from "../contexts/messageContext";
 import { ConfirmationTypeContext } from "../contexts/confirmationTypeContext";
+import { getSingleBlog, getFourBlogs } from "../../../fetchRequests/blogRoutes";
 
 function SingleBlogModal(props) {
   const { animateSingleBlogModal, animateSuccessModal } = props;
@@ -20,31 +21,16 @@ function SingleBlogModal(props) {
   const [relatedBlogs, setRelatedBlogs] = useState([]);
 
   const getSingleBlogBySlug = async () => {
-    try {
-      const response = await fetch(
-        `http://localhost:5000/${selectedBlogSlug}`,
-        {
-          method: "GET",
-          headers: { "content-type": "application/json" },
-        }
-      );
-      const data = await response.json();
-      setSelectedBlog(data[0]);
-    } catch (err) {
-      console.log("error", err);
+    let singleBlog = await getSingleBlog(selectedBlogSlug);
+    if (singleBlog) {
+      setSelectedBlog(singleBlog);
     }
   };
 
   const getRelatedBlogs = async () => {
-    try {
-      const response = await fetch(`http://localhost:5000/related`, {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-      });
-      const data = await response.json();
-      setRelatedBlogs(data);
-    } catch (err) {
-      console.log("error", err);
+    let relatedFourBlogs = await getFourBlogs();
+    if (relatedFourBlogs) {
+      setRelatedBlogs(relatedFourBlogs);
     }
   };
 
@@ -56,16 +42,16 @@ function SingleBlogModal(props) {
   }, [selectedBlogSlug]);
 
   const delteConfirm = () => {
-    setConfirmationType(2)
-    setMessage(`Are you sure you want to delete "${selectedBlog.title}"?`)
-    animateSuccessModal()
-  }
+    setConfirmationType(2);
+    setMessage(`Are you sure you want to delete "${selectedBlog.title}"?`);
+    animateSuccessModal();
+  };
 
   return (
     <div className="modalBodyContainer">
       <div onClick={() => delteConfirm()} className="deleteBlogButton">
-          <p>Delete</p>
-        </div>
+        <p>Delete</p>
+      </div>
       <div className="xBtn" onClick={() => animateSingleBlogModal()}>
         <img
           src={xButton}

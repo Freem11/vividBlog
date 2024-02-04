@@ -2,7 +2,7 @@ import React from "react";
 import { useContext, useEffect, useState } from "react";
 import { getToday } from "../../helpers/dateFormatingHelper";
 import { MessageContext } from "../contexts/messageContext";
-
+import { createNewBlog } from "../../../fetchRequests/blogRoutes";
 import xButton from "../../images/close.png";
 import "./singleBlogModal.css";
 
@@ -18,7 +18,7 @@ function NewBlogModal(props) {
     created_at: "",
   });
 
-  const createNewBlog = async (newBlogInfo, slug, date) => {
+  const generateNewBlog = async (newBlogInfo, slug, date) => {
     let dataPackage = {
       title: newBlogInfo.title,
       slug: slug,
@@ -29,25 +29,14 @@ function NewBlogModal(props) {
       updated_at: date,
     };
 
-    try {
-      const response = await fetch(`http://localhost:5000/create`, {
-        method: "POST",
-        body: JSON.stringify(dataPackage),
-        headers: { "content-type": "application/json" },
-      });
-      const data = await response.json();
-      if (data) {
+    let newBlog = await createNewBlog(dataPackage)
+      if (newBlog) {
         setMessage("Your New Blog was sucessfully Created!");
         animateSuccessModal();
       } else {
         animateSuccessModal();
         setMessage("There was an error creating your mesage, please try again");
       }
-    } catch (err) {
-      animateSuccessModal();
-      setMessage("There was an error creating your mesage, please try again");
-      console.log("error", err);
-    }
   };
 
   const handleChange = async (e) => {
@@ -70,7 +59,7 @@ function NewBlogModal(props) {
       setMessage("Your Blog is still incomplete! \n Please make sure to have a Title, Image and your Content in place before submitting")
       animateSuccessModal();
     } else {
-      createNewBlog(newBlogInfo, slugCreate, formattedDate);
+      generateNewBlog(newBlogInfo, slugCreate, formattedDate);
     }
   };
 
@@ -86,6 +75,7 @@ function NewBlogModal(props) {
       updated_at: "",
       deleted_at: "",
     });
+    console.log(newBlogInfo)
   };
 
   return (

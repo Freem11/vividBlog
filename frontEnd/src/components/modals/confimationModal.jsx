@@ -5,14 +5,17 @@ import { MessageContext } from "../contexts/messageContext";
 import { SelectedSingleBlogContext } from "../contexts/selectedBlogContext";
 import { ConfirmationTypeContext } from "../contexts/confirmationTypeContext";
 import { getToday } from "../../helpers/dateFormatingHelper";
+import { softDeleteBlog } from "../../../fetchRequests/blogRoutes";
 
 function ConfirmationModal(props) {
   const { animateSuccessModal, setSingleBlogYCoord, setNewBlogYCoord } = props;
   const { message, setMessage } = useContext(MessageContext);
   const { selectedBlogSlug } = useContext(SelectedSingleBlogContext);
-  const { confirmationType, setConfirmationType } = useContext(ConfirmationTypeContext);
-
-  const softDeleteBlog = async () => {
+  const { confirmationType, setConfirmationType } = useContext(
+    ConfirmationTypeContext
+  );
+  
+  const softRemoveBlog = async () => {
     let deleted = new Date(Date.now()); //toString()
     let formattedDate = getToday(deleted);
 
@@ -22,32 +25,21 @@ function ConfirmationModal(props) {
       deleted_at: formattedDate,
     };
 
-    try {
-      const response = await fetch(`http://localhost:5000/deleted${selectedBlogSlug}`, {
-        method: "POST",
-        body: JSON.stringify(dataPackage),
-        headers: { "content-type": "application/json" },
-      });
-      const data = await response.json();
-      if (data) {
-        setMessage("Your New Blog was sucessfully Deleted");
-        setConfirmationType(1);
-      } else {
-        setConfirmationType(1);
-        setMessage("There was an error deleting your blog, please try again");
-      }
-    } catch (err) {
+    let removedBlog = await softDeleteBlog(selectedBlogSlug, dataPackage);
+    if (removedBlog) {
+      setMessage("Your New Blog was sucessfully Deleted");
+      setConfirmationType(1);
+    } else {
       setConfirmationType(1);
       setMessage("There was an error deleting your blog, please try again");
-      console.log("error", err);
     }
   };
 
   const cleanupModals = async () => {
-    animateSuccessModal()
-    setSingleBlogYCoord(0)
-    setNewBlogYCoord(0)
-  }
+    animateSuccessModal();
+    setSingleBlogYCoord(0);
+    setNewBlogYCoord(0);
+  };
 
   return (
     <div className="modalBodyContainer">
@@ -63,7 +55,7 @@ function ConfirmationModal(props) {
         </div>
       ) : (
         <div className="submitSection">
-          <div className="submitBtn" onClick={() => softDeleteBlog()}>
+          <div className="submitBtn" onClick={() => softRemoveBlog()}>
             <p>Confirm</p>
           </div>
           <div className="submitBtn" onClick={() => animateSuccessModal()}>
