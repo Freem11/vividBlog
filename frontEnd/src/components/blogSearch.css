@@ -33,6 +33,20 @@
     padding-left: 6vw;
 }
 
+.newBlogButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: lightblue;
+    border-radius: 1rem;
+    margin-left: 3vw;
+    margin-right: -2vw;
+    height: 3vh;
+    padding: 0.75vw;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
+}
+
 .controls{
     display: flex;
     flex-direction: row;

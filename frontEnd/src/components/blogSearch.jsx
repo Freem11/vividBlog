@@ -6,7 +6,7 @@ import rightArrow from "../images/right-arrow.png";
 import "./blogSearch.css";
 
 function BlogSearch(props) {
-  const { animateSingleBlogModal } = props
+  const { animateSingleBlogModal, animateNewBlogModal } = props;
   const [blogList, setBlogList] = useState([]);
   const [limits, setLimits] = useState({ upper: 6, lower: 1, text: "" });
   const [direction, setDirection] = useState("");
@@ -22,15 +22,23 @@ function BlogSearch(props) {
 
       //check if at begining or end of data
       if (data.length === 0) {
-          console.log
+        console.log;
         direction === "plus"
-          ? setLimits({ ...limits, upper: limits.upper - 6, lower: limits.lower - 6 })
-          : setLimits({ ...limits, upper: limits.upper + 6, lower: limits.lower + 6 });
+          ? setLimits({
+              ...limits,
+              upper: limits.upper - 6,
+              lower: limits.lower - 6,
+            })
+          : setLimits({
+              ...limits,
+              upper: limits.upper + 6,
+              lower: limits.lower + 6,
+            });
       } else {
         setBlogList(data);
       }
-      
-      setDirection("")
+
+      setDirection("");
     } catch (err) {
       console.log("error", err);
     }
@@ -69,6 +77,13 @@ function BlogSearch(props) {
           value={limits.text}
           onChange={handleChange}
         />
+
+        <div
+          onClick={() => animateNewBlogModal()}
+          className="newBlogButton"
+        >
+            <p>Compose</p>
+        </div>
       </div>
 
       <div className="controls">
@@ -85,7 +100,13 @@ function BlogSearch(props) {
         <div className="tileZone">
           {blogList &&
             blogList.map((blog) => {
-              return <BlogTile key={blog.id} blogInfo={blog} animateSingleBlogModal={animateSingleBlogModal}/>;
+              return (
+                <BlogTile
+                  key={blog.id}
+                  blogInfo={blog}
+                  animateSingleBlogModal={animateSingleBlogModal}
+                />
+              );
             })}
         </div>
         <div className="arrowWrapperRight" onClick={shiftRight}>

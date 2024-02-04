@@ -21,6 +21,20 @@
     left: 70vw;
 }
 
+.xBtn2 {
+    background-color: pink;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    border-radius: 4vw;
+    width: 5vw;
+    height: 5vw;
+    position: absolute;
+    top: 3vh;
+    left: 70vw;
+    color: #000;
+}
+
 .topSection{
     width: 100%;
     height: 20vh;
@@ -38,4 +52,39 @@
     flex-wrap: wrap;
     flex-direction: row;
     background-color: blue;
+}
+
+.bottomSection{
+    width: 100%;
+    height: 70vh;
+    background-color: lightgreen;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 5vh;
+}
+
+.inputContainerContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: lightsalmon;
+    height: 50vh;
+    width: 100%;
+}
+
+.searchInputContent {
+    width: 80%;
+    height: 50%;
+    background-color: white;
+    color: #000;
+    border-radius: 1rem;
+    padding-top: 1vw;
+    padding-left: 2vw;
+    
 }
