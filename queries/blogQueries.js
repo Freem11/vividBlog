@@ -31,7 +31,6 @@ const getSixBlogs = (lowerLimit, upperLimit, text) => {
       [lowerLimit, upperLimit]
     )
     .then((response) => {
-      console.log("database passed:", response.rows);
       return response.rows;
     })
     .catch((error) => {
@@ -42,11 +41,9 @@ const getSixBlogs = (lowerLimit, upperLimit, text) => {
 getSixBlogs();
 
 const getSingleBlogBySlug = (slug) => {
-  console.log("query", slug);
   return db
     .query(`SELECT * FROM Blogs WHERE slug = $1`, [slug]) 
     .then((response) => {
-      console.log("database passed:", response.rows);
       return response.rows;
     })
     .catch((error) => {
@@ -60,7 +57,6 @@ const getFourBlogs = () => {
   return db
     .query(`SELECT * FROM (SELECT * FROM Blogs ORDER BY RANDOM() LIMIT 4)x ORDER BY published_at DESC`)
     .then((response) => {
-      // console.log("database passed:", response.rows);
       return response.rows;
     })
     .catch((error) => {
@@ -70,4 +66,27 @@ const getFourBlogs = () => {
 
 getFourBlogs();
 
-module.exports = { getSixBlogs, getSingleBlogBySlug, getFourBlogs };
+const addNewBlog = (title, slug, content, image, published_at, created_at, updated_at) => {
+
+ return db.query(`INSERT INTO Blogs (title, slug, content, image, published_at, created_at, updated_at)
+  VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *;`, [title, slug, content, image, published_at, created_at, updated_at])
+  .then((response) => {
+      return response.rows;
+  })
+  .catch((error) => {
+      console.log("unable to query db got error:", error);
+  })
+}
+
+const softDeleteBlog = (deleted_at, updated_at, slug) => {
+
+  return db.query(`UPDATE Blogs SET deleted_at = $1, updated_at = $2 WHERE slug= $3 RETURNING *;`, [updated_at, updated_at, slug])
+  .then((response) => {
+      return response.rows;
+  })
+  .catch((error) => {
+      console.log("unable to query db got error:", error);
+  })
+}
+
+module.exports = { getSixBlogs, getSingleBlogBySlug, getFourBlogs, addNewBlog, softDeleteBlog };

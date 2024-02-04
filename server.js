@@ -21,10 +21,12 @@ app.listen(port, () => console.log("Backend server live on " + port));
 //Get Pagination Blogs (6)
 app.post("/", async (req, res) => {
   
-  console.log("server", req.body)
-
   try {
-    const blogs = await db.getSixBlogs(req.body.lower, req.body.upper, req.body.text);
+    const blogs = await db.getSixBlogs(
+      req.body.lower,
+      req.body.upper,
+      req.body.text
+    );
     res.json(blogs);
   } catch (err) {
     res.json("error:", err);
@@ -33,9 +35,7 @@ app.post("/", async (req, res) => {
 
 //Get Single Blog
 app.get("/:slug", async (req, res) => {
-  
-  console.log("server", req.params.slug)
-
+ 
   try {
     const blogs = await db.getSingleBlogBySlug(req.params.slug);
     res.json(blogs);
@@ -46,11 +46,44 @@ app.get("/:slug", async (req, res) => {
 
 //Get Single Blog
 app.post("/related", async (req, res) => {
-  
   try {
     const blogs = await db.getFourBlogs();
     res.json(blogs);
   } catch (err) {
     res.json("error:", err);
+  }
+});
+
+//Post New Blog
+app.post("/create", async (req, res) => {
+  
+  try {
+    const blogs = await db.addNewBlog(
+      req.body.title,
+      req.body.slug,
+      req.body.content,
+      req.body.image,
+      req.body.published_at,
+      req.body.created_at,
+      req.body.updated_at
+    );
+    res.json(blogs);
+  } catch (err) {
+    res.status("error:", err);
+  }
+});
+
+//Soft Delete Blog
+app.post("/delete:slug", async (req, res) => {
+
+  try {
+    const blogs = await db.softDeleteBlog(
+      req.body.updated_at,
+      req.body.updated_at,
+      req.body.slug
+    );
+    res.json(blogs);
+  } catch (err) {
+    res.status("error:", err);
   }
 });
