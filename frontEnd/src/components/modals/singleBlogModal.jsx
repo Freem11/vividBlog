@@ -18,7 +18,6 @@ function SingleBlogModal(props) {
   );
   const [selectedBlog, setSelectedBlog] = useState([]);
   const [relatedBlogs, setRelatedBlogs] = useState([]);
-  console.log("passing", selectedBlogSlug);
 
   const getSingleBlogBySlug = async () => {
     try {

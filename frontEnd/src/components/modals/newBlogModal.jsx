@@ -51,7 +51,6 @@ function NewBlogModal(props) {
   };
 
   const handleChange = async (e) => {
-    console.log(e.target.name, e.target.value);
     setNewBlogInfo({ ...newBlogInfo, [e.target.name]: e.target.value });
   };
 

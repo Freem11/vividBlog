@@ -28,7 +28,6 @@ function BlogSearch(props) {
 
       //check if at begining or end of data
       if (data.length === 0) {
-        console.log;
         direction === "plus"
           ? setLimits({
               ...limits,
@@ -63,7 +62,6 @@ function BlogSearch(props) {
   }, [singleBlogYCoord, newBlogYCoord, successYCoord]);
 
   const handleChange = async (e) => {
-    console.log(e.target.value);
     setLimits({ ...limits, text: e.target.value });
   };
 
