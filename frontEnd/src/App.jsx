@@ -27,6 +27,9 @@ function App() {
   function trackScreen() {
     setWindowWidth(window.innerWidth);
     setWindowHeight(window.innerHeight);
+    // setSingleBlogYCoord(0)
+    // setNewBlogYCoord(0)
+    // setSuccessYCoord(0)
   }
   const [singleBlogYCoord, setSingleBlogYCoord] = useState(0);
   const [newBlogYCoord, setNewBlogYCoord] = useState(0);
@@ -102,6 +105,8 @@ function App() {
               <SingleBlogModal
                 animateSingleBlogModal={animateSingleBlogModal}
                 animateSuccessModal={animateSuccessModal}
+                singleBlogYCoord={singleBlogYCoord}
+                setSingleBlogYCoord={setSingleBlogYCoord}
               />
             </animated.div>
 

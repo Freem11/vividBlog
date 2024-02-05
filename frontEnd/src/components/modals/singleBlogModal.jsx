@@ -9,7 +9,7 @@ import { ConfirmationTypeContext } from "../contexts/confirmationTypeContext";
 import { getSingleBlog, getFourBlogs } from "../../../fetchRequests/blogRoutes";
 
 function SingleBlogModal(props) {
-  const { animateSingleBlogModal, animateSuccessModal } = props;
+  const { animateSingleBlogModal, animateSuccessModal, singleBlogYCoord, setSingleBlogYCoord } = props;
   const { message, setMessage } = useContext(MessageContext);
   const { selectedBlogSlug, setSelectedBlogSlug } = useContext(
     SelectedSingleBlogContext
@@ -49,9 +49,7 @@ function SingleBlogModal(props) {
 
   return (
     <div className="modalBodyContainer">
-      <div onClick={() => delteConfirm()} className="deleteBlogButton">
-        <p>Delete</p>
-      </div>
+    
       <div className="xBtn" onClick={() => animateSingleBlogModal()}>
         <img
           src={xButton}
@@ -63,12 +61,17 @@ function SingleBlogModal(props) {
         />
       </div>
       <div className="topSection">
-        <h3 className="tileText">{selectedBlog.title}</h3>
-        <p className="tileText">{selectedBlog.content}</p>
+        <div className="topLineBox">
+        <h3 className="headerTextShow">{selectedBlog.title}</h3>
+        <div onClick={() => delteConfirm()} className="deleteBlogButton">
+        <p className="deleteText">Delete</p>
+        </div>
+        </div>
+        <p className="blogContentText">{selectedBlog.content}</p>
       </div>
 
       <div className="lowSection">
-        <h4 className="tileText">Other blogs you may like</h4>
+        <h4 className="tileText2">Other blogs you may like</h4>
         <div className="tileZone2">
           {relatedBlogs &&
             relatedBlogs.map((blog) => {
@@ -77,6 +80,8 @@ function SingleBlogModal(props) {
                   key={blog.id}
                   blogInfo={blog}
                   animateSingleBlogModal={animateSingleBlogModal}
+                  singleBlogYCoord={singleBlogYCoord}
+                  setSingleBlogYCoord={setSingleBlogYCoord}
                 />
               );
             })}

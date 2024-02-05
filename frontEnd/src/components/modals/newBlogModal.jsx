@@ -79,8 +79,8 @@ function NewBlogModal(props) {
   };
 
   return (
-    <div className="modalBodyContainer">
-      <h1 className="headerText">Create a new blog</h1>
+    <div className="modalBodyContainerCreate">
+      <h1 className="headerTextCreate">Create a new blog</h1>
       <div className="xBtn2" onClick={() => handleClose()}>
         <img
           src={xButton}
@@ -91,7 +91,9 @@ function NewBlogModal(props) {
           }}
         />
       </div>
-      <div className="bottomSection">
+      <div className="midSection">
+
+        <div className="leftSide">
         <div className="inputHodler">
         <div className="inputContainer">
           <p  className="formLabels">Title:</p>
@@ -115,7 +117,9 @@ function NewBlogModal(props) {
           />
         </div>
         </div>
+        </div>
 
+        <div className="rightSide">
         <div className="inputContainerContent">
           <p className="formLabels2">Enter Your Content:</p>
           <textarea
@@ -126,6 +130,7 @@ function NewBlogModal(props) {
             onChange={handleChange}
           />
         </div>
+      </div>
       </div>
 
       <div className="submitSection">

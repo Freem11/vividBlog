@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import BlogTile from "./blogTile";
-import Button from "./button";
 import rightArrow from "../images/right-arrow.png";
 import "./blogSearch.css";
 import { getSixBlog } from "../../fetchRequests/blogRoutes";
@@ -77,7 +76,7 @@ function BlogSearch(props) {
           onChange={handleChange}
         />
         <div onClick={() => animateNewBlogModal()} className="newBlogButton">
-          <p>Compose</p>
+          <p className="ComposeButton">Compose</p>
         </div>
       </div>
 

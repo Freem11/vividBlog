@@ -1,9 +1,10 @@
 .tile {
-    display: flex;
-    flex-direction: row;
+    /* display: flex; */
+    flex-direction: column;
     flex-wrap: wrap;
-    width: 30vw;
-    height: 15vw;
+    padding: 1em;
+    justify-content: flex-start;
+    align-items: baseline; 
     background-color: white;
     border-radius: 1rem;
     margin: 1vw;
@@ -13,24 +14,25 @@
 .tileTopRow {
     /* background-color: mediumblue; */
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    /* align-items: center; */
+    /* flex-wrap: wrap; */
+    /* justify-content: center; */
 }
 
 .tileText {
-    margin: 1vw;
-    font-size: 2vw;
-    width: 20vw;
+    font-size: 1em;
+    font-weight: bold;
     color: #000;
-    font-family: Itim;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     /* background-color: maroon; */
 }
 
 .dateText {
-    margin: 1vw;
-    font-size: 2vw;
+    font-size: 1em;
     color: #000;
-    font-family: Itim;
-    /* background-color: maroon; */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* background-color: green; */
 }
 
 .deleteBlogButton{

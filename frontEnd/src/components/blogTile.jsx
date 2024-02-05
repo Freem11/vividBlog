@@ -4,22 +4,32 @@ import "./blogTile.css";
 import { SelectedSingleBlogContext } from "../components/contexts/selectedBlogContext";
 
 function BlogTile(props) {
-  const { blogInfo, animateSingleBlogModal } = props;
+  const { blogInfo, animateSingleBlogModal, singleBlogYCoord, setSingleBlogYCoord } = props;
   const { selectedBlogSlug, setSelectedBlogSlug } = useContext(
     SelectedSingleBlogContext
   );
 
   const setupSingleBlog = () => {
     setSelectedBlogSlug(blogInfo.slug);
-    animateSingleBlogModal();
+
+    if(singleBlogYCoord === undefined){
+      animateSingleBlogModal();
+    }
+  
   };
 
+  // if(selectedBlogSlug){
+
+  // }
+
+  let trimmed = blogInfo.published_at.substring(0,10)
+  
   return (
     <div className="tile" onClick={() => setupSingleBlog()}>
-      <div className="tileTopRow">
+      {/* <div className="tileTopRow"> */}
         <p className="tileText">{blogInfo.title}</p>
-      </div>
-      <p className="dateText">Posted: {blogInfo.published_at}</p>
+      {/* </div> */}
+      <p className="dateText">Posted: {trimmed}</p>
     </div>
   );
 }
