@@ -187,10 +187,13 @@
 
 .searchInput2{
     background-color: white;
+    color: #000;
     border-radius: 1rem;
     width: 30vw;
     height: 40px;
     max-height: 40px;
+    padding-left: 5%;
+    margin-left: 5%;
 }
 
 

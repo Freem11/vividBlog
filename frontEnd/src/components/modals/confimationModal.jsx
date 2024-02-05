@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext, useEffect, useState } from "react";
-import "./singleBlogModal.css";
+import "./confimationModal.css";
 import { MessageContext } from "../contexts/messageContext";
 import { SelectedSingleBlogContext } from "../contexts/selectedBlogContext";
 import { ConfirmationTypeContext } from "../contexts/confirmationTypeContext";
@@ -38,27 +38,32 @@ function ConfirmationModal(props) {
   const cleanupModals = async () => {
     animateSuccessModal();
     setSingleBlogYCoord(0);
-    setNewBlogYCoord(0);
+    if (message === "Your Blog is still incomplete! \n Please make sure to have a Title, Image and your Content in place before submitting"){
+
+    } else {
+      setNewBlogYCoord(0);
+    }
+
   };
 
   return (
-    <div className="modalBodyContainer">
+    <div className="modalConfirmContainer">
       <div className="topSection">
-        <h3 className="tileText">{message}</h3>
+        <h3 className="tileTextConfirm">{message}</h3>
       </div>
 
       {confirmationType === 1 ? (
-        <div className="submitSection">
-          <div className="submitBtn" onClick={() => cleanupModals()}>
+        <div className="submitSectionConfirm">
+          <div className="submitBtnConfirm" onClick={() => cleanupModals()}>
             <p>Ok</p>
           </div>
         </div>
       ) : (
-        <div className="submitSection">
+        <div className="submitSectionConfirm2">
           <div className="submitBtn" onClick={() => softRemoveBlog()}>
             <p>Confirm</p>
           </div>
-          <div className="submitBtn" onClick={() => animateSuccessModal()}>
+          <div className="cancelBtnConfirm" onClick={() => animateSuccessModal()}>
             <p>Cancel</p>
           </div>
         </div>
