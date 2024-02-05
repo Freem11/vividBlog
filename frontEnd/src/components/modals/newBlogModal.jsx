@@ -3,17 +3,25 @@ import { useContext, useEffect, useState } from "react";
 import { getToday } from "../../helpers/dateFormatingHelper";
 import { MessageContext } from "../contexts/messageContext";
 import { createNewBlog } from "../../../fetchRequests/blogRoutes";
+import { addPhoto, getPhoto } from "../../../fetchRequests/photoRoutes";
 import xButton from "../../images/close.png";
 import "./singleBlogModal.css";
 
 function NewBlogModal(props) {
   const { animateNewBlogModal, animateSuccessModal } = props;
   const { message, setMessage } = useContext(MessageContext);
+  const [photoFile, setPhotoFile] = useState(null);
+  const [photoPath, setPhotoPath] = useState(null);
+
+  useEffect(() => {
+    setPhotoPath(`./pics/${photoFile}`)
+  }, [photoFile])
+
   const [newBlogInfo, setNewBlogInfo] = useState({
     title: "",
     slug: "",
     content: "",
-    image: "",
+    image: null,
     published_at: "",
     created_at: "",
   });
@@ -29,18 +37,53 @@ function NewBlogModal(props) {
       updated_at: date,
     };
 
-    let newBlog = await createNewBlog(dataPackage)
-      if (newBlog) {
-        setMessage("Your New Blog was sucessfully Created!");
-        animateSuccessModal();
-      } else {
-        animateSuccessModal();
-        setMessage("There was an error creating your mesage, please try again");
-      }
+    let newBlog = await createNewBlog(dataPackage);
+    if (newBlog) {
+      setMessage("Your New Blog was sucessfully Created!");
+      setNewBlogInfo({
+        title: "",
+        slug: "",
+        content: "",
+        image: null,
+        published_at: "",
+        created_at: "",
+        updated_at: "",
+        deleted_at: "",
+      });
+      animateSuccessModal();
+    } else {
+      animateSuccessModal();
+      setMessage("There was an error creating your mesage, please try again");
+    }
   };
 
   const handleChange = async (e) => {
-    setNewBlogInfo({ ...newBlogInfo, [e.target.name]: e.target.value });
+    if (e.target.name === "image") {
+      if (e.target.files[0]) {
+        let image = e.target.files[0];
+        let extension = image.name.split(".").pop();
+        const fileName = Date.now() + "." + extension;
+
+        //uploadPhoto
+        const data = new FormData();
+        data.append("image", e.target.files[0]);
+        try {
+          const response = await fetch(`http://localhost:5000/photo/upload`, {
+            method: "POST",
+            body: data,
+          });
+          const dataReturned = await response.json();
+          console.log("hey", dataReturned)
+          setPhotoFile(dataReturned)
+          setNewBlogInfo({ ...newBlogInfo, image: dataReturned });
+        } catch (err) {
+          console.log("error", err);
+        }
+
+      }
+    } else {
+      setNewBlogInfo({ ...newBlogInfo, [e.target.name]: e.target.value });
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -56,7 +99,9 @@ function NewBlogModal(props) {
       newBlogInfo.content.length === 0 ||
       newBlogInfo.content.length === null
     ) {
-      setMessage("Your Blog is still incomplete! \n Please make sure to have a Title, Image and your Content in place before submitting")
+      setMessage(
+        "Your Blog is still incomplete! \n Please make sure to have a Title, Image and your Content in place before submitting"
+      );
       animateSuccessModal();
     } else {
       generateNewBlog(newBlogInfo, slugCreate, formattedDate);
@@ -65,18 +110,20 @@ function NewBlogModal(props) {
 
   const handleClose = () => {
     animateNewBlogModal();
+    setPhotoPath(null)
     setNewBlogInfo({
       title: "",
       slug: "",
       content: "",
-      image: "",
+      image: null,
       published_at: "",
       created_at: "",
       updated_at: "",
       deleted_at: "",
     });
-    console.log(newBlogInfo)
   };
+
+  console.log("photo?", photoFile, newBlogInfo)
 
   return (
     <div className="modalBodyContainerCreate">
@@ -92,45 +139,56 @@ function NewBlogModal(props) {
         />
       </div>
       <div className="midSection">
-
         <div className="leftSide">
-        <div className="inputHodler">
-        <div className="inputContainer">
-          <p  className="formLabels">Title:</p>
-          <input
-            type="text"
-            name="title"
-            className="searchInput2"
-            value={newBlogInfo.title}
-            onChange={handleChange}
-          />
-        </div>
+          <div className="inputHodler">
+            <div className="inputContainer">
+              <p className="formLabels">Title:</p>
+              <input
+                type="text"
+                name="title"
+                className="searchInput2"
+                value={newBlogInfo.title}
+                onChange={handleChange}
+              />
+            </div>
 
-        <div className="inputContainer">
-          <p className="formLabels">Image:</p>
-          <input
-            type="text"
-            name="image"
-            className="searchInput2"
-            value={newBlogInfo.image}
-            onChange={handleChange}
-          />
-        </div>
-        </div>
+            <div className="inputContainer2">
+              <p className="formLabels1">Image:</p>
+              <input
+                type="file"
+                name="image"
+                style={{
+                  color : "transparent",
+                  marginLeft:"4vw"
+                }}
+                onChange={handleChange}
+              />
+            </div>
+
+          <div className="pickie">
+            <img
+              src={photoPath}
+              height="100%"
+              className="picHolder"
+            ></img>
+          </div>
+
+          </div>
+        
         </div>
 
         <div className="rightSide">
-        <div className="inputContainerContent">
-          <p className="formLabels2">Enter Your Content:</p>
-          <textarea
-            type="text"
-            name="content"
-            className="searchInputContent"
-            value={newBlogInfo.content}
-            onChange={handleChange}
-          />
+          <div className="inputContainerContent">
+            <p className="formLabels2">Enter Your Content:</p>
+            <textarea
+              type="text"
+              name="content"
+              className="searchInputContent"
+              value={newBlogInfo.content}
+              onChange={handleChange}
+            />
+          </div>
         </div>
-      </div>
       </div>
 
       <div className="submitSection">

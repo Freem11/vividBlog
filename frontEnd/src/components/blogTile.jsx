@@ -26,6 +26,14 @@ function BlogTile(props) {
   
   return (
     <div className="tile" onClick={() => setupSingleBlog()}>
+       <img
+        src={`./pics/${blogInfo.image}`}
+        width={"100vw"}
+        height={"80vh"}
+        style={{
+          objectFit: "cover",
+        }}
+      />
       {/* <div className="tileTopRow"> */}
         <p className="tileText">{blogInfo.title}</p>
       {/* </div> */}

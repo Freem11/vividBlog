@@ -5,6 +5,7 @@ cors = require("cors");
 const bodyParser = require("body-parser");
 require("dotenv").config({ path: `./.env` });
 const db = require("./queries/blogQueries");
+const multer = require("multer");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -86,4 +87,40 @@ app.post("/delete:slug", async (req, res) => {
   } catch (err) {
     res.status("error:", err);
   }
+});
+
+
+
+
+
+//Photo Routes
+
+const storage = multer.diskStorage({
+  destination: (req, file, callback) => {
+    callback(null, "./frontEnd/public/pics")
+  },
+  filename: (req, file, callback) => {
+    callback(null, Date.now() + path.extname(file.originalname))
+  }
+})
+
+const upload = multer({storage: storage})
+
+let fileToSend;
+let result;
+
+//Upload Photo
+app.post("/photo/upload", upload.single('image'), async (req, res) => {
+
+  console.log("server", req.file.filename)
+  res.json(req.file.filename)
+  // res.send(req.file.filename)
+
+}, (err) => {
+  console.log("error:", err)
+});
+
+// Get Photos
+ app.get("/photo/uploaad", (req, res) => {
+  res.json(result);
 });
