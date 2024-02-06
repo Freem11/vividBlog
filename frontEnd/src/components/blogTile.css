@@ -8,6 +8,7 @@
     background-color: white;
     border-radius: 1rem;
     margin: 1vw;
+    max-height: 16vh;
     cursor: pointer;
 }
 
@@ -22,6 +23,7 @@
 
 .tileText {
     font-size: 1em;
+    max-width: 16vw;
     font-weight: bold;
     color: #000;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;

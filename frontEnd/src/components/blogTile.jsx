@@ -37,7 +37,7 @@ function BlogTile(props) {
       {/* <div className="tileTopRow"> */}
         <p className="tileText">{blogInfo.title}</p>
       {/* </div> */}
-      <p className="dateText">Posted: {trimmed}</p>
+      {/* <p className="dateText">Posted: {trimmed}</p> */}
     </div>
   );
 }

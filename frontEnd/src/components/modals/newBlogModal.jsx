@@ -13,15 +13,15 @@ function NewBlogModal(props) {
   const [photoFile, setPhotoFile] = useState(null);
   const [photoPath, setPhotoPath] = useState(null);
 
-  useEffect(() => {
-    setPhotoPath(`./pics/${photoFile}`)
-  }, [photoFile])
+  // useEffect(() => {
+  //   setPhotoPath(`./pics/${photoFile}`);
+  // }, [photoFile]);
 
   const [newBlogInfo, setNewBlogInfo] = useState({
     title: "",
     slug: "",
     content: "",
-    image: null,
+    image: "",
     published_at: "",
     created_at: "",
   });
@@ -44,7 +44,7 @@ function NewBlogModal(props) {
         title: "",
         slug: "",
         content: "",
-        image: null,
+        image: "",
         published_at: "",
         created_at: "",
         updated_at: "",
@@ -73,13 +73,13 @@ function NewBlogModal(props) {
             body: data,
           });
           const dataReturned = await response.json();
-          console.log("hey", dataReturned)
-          setPhotoFile(dataReturned)
+          setPhotoFile(dataReturned);
           setNewBlogInfo({ ...newBlogInfo, image: dataReturned });
+          setPhotoPath(`./pics/${dataReturned}`);
         } catch (err) {
           console.log("error", err);
         }
-
+        setPhotoPath(`./pics/${dataReturned}`);
       }
     } else {
       setNewBlogInfo({ ...newBlogInfo, [e.target.name]: e.target.value });
@@ -110,12 +110,13 @@ function NewBlogModal(props) {
 
   const handleClose = () => {
     animateNewBlogModal();
-    setPhotoPath(null)
+    setPhotoFile("") 
+    setPhotoPath("");
     setNewBlogInfo({
       title: "",
       slug: "",
       content: "",
-      image: null,
+      image: "",
       published_at: "",
       created_at: "",
       updated_at: "",
@@ -123,7 +124,7 @@ function NewBlogModal(props) {
     });
   };
 
-  console.log("photo?", photoFile, newBlogInfo)
+  console.log("photo?", photoFile, newBlogInfo);
 
   return (
     <div className="modalBodyContainerCreate">
@@ -158,23 +159,18 @@ function NewBlogModal(props) {
                 type="file"
                 name="image"
                 style={{
-                  color : "transparent",
-                  marginLeft:"4vw"
+                  color: "transparent",
+                  marginLeft: "4vw",
                 }}
                 onChange={handleChange}
               />
             </div>
-
-          <div className="pickie">
-            <img
-              src={photoPath}
-              height="100%"
-              className="picHolder"
-            ></img>
+            {/* {photoPath !== null && ( */}
+            <div className="pickie">
+              <img src={photoPath} height="100%" className="picHolder"></img>
+            </div>
+            {/* )} */}
           </div>
-
-          </div>
-        
         </div>
 
         <div className="rightSide">
