@@ -53,9 +53,21 @@ const getSingleBlogBySlug = (slug) => {
 
 getSixBlogs();
 
+// need a WHERE deleted IS NULL and published IS NOT NULL
 const getFourBlogs = () => {
   return db
-    .query(`SELECT * FROM (SELECT * FROM Blogs ORDER BY RANDOM() LIMIT 4)x ORDER BY published_at DESC`)
+    .query(`SELECT
+     * 
+     FROM 
+     (
+       SELECT 
+       * 
+       FROM Blogs 
+       WHERE published_at IS NOT NULL 
+      AND deleted_at IS NULL 
+      ORDER BY RANDOM() LIMIT 4
+      )x 
+      ORDER BY published_at DESC`)
     .then((response) => {
       return response.rows;
     })
