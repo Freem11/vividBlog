@@ -172,6 +172,7 @@ function NewBlogModal(props) {
                   color: "transparent",
                   marginLeft: "3vw",
                   marginTop: "3vh",
+                  cursor: "pointer",
                   // width: "10vw",
                   // height: "2vh"
                 }}

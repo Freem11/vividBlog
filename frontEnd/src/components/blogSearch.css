@@ -83,6 +83,7 @@
     background-color: white;
     /* margin-top: 10vh; */
     margin-left: 1vw;
+    cursor: pointer;
 }
 
 .arrowWrapperLeft{
@@ -96,4 +97,5 @@
     background-color: white;
     /* margin-top: 10vh; */
     margin-right: 1vw;
+    cursor: pointer;
 }
