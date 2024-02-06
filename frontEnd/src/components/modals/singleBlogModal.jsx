@@ -62,22 +62,22 @@ function SingleBlogModal(props) {
       </div>
       <div className="topSection" >
         <div className="topLineBox">
+        <img
+        src={`./pics/${selectedBlog.image}`}
+        width={"100%"}
+        style={{
+          objectFit: "cover",
+          marginTop: "-5%",
+          marginLeft: "-10vw",
+          zIndex: 0
+        }}
+      />
         <h3 className="headerTextShow">{selectedBlog.title}</h3>
         <div onClick={() => delteConfirm()} className="deleteBlogButton">
         <p className="deleteText">Delete</p>
         </div>
         </div>
-        <img
-        src={`./pics/${selectedBlog.image}`}
-        width={"90%"}
-        height={"20%"}
-        style={{
-          objectFit: "cover",
-          marginTop: "-30%",
-          marginLeft: "3vw",
-          zIndex: 0
-        }}
-      />
+        
         <p className="blogContentText">{selectedBlog.content}</p>
       </div>
 

@@ -8,6 +8,7 @@
     margin-left: 2vw;
     margin-top: 2vh;
     background-color: green;
+    overflow-y: scroll;
 }
 
 .modalBodyContainerCreate{
@@ -28,6 +29,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    width:  100%;
+    margin-left: 3.7vw;
     /* background-color: blueviolet; */
 }
 
@@ -54,14 +57,15 @@
 .headerTextShow{
     /* background-color: brown; */
     z-index: 10;
-    width: 35vw;
-    margin-left: -8vw;
+    width: 30vw;
+    margin-left: -43vw;
     font-size: 4vw;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
 }
 
 .deleteBlogButton {
-    margin-left: 35vw;
+    position: relative;
+    margin-left: -1vw;
     /* margin-top: 3.5vh; */
     width: 10vw;
     height: 2vh;
@@ -74,7 +78,7 @@
 
 .blogContentText{
     margin-left: 6vw;
-    margin-top: 10vh;
+    margin-top: 3vh;
     font-size: 2vw;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
     overflow: hidden;
@@ -89,6 +93,7 @@
     border-radius: 4vw;
     width: 5vw;
     height: 5vw;
+    /* margin-top: -150%; */
     position: absolute;
     top: 3vh;
     left: 71vw;
@@ -121,8 +126,8 @@
     display: flex;
     flex-direction: column;
     align-self: start;
-    width: 30vw;
-    height: 100%;
+    width: 50vw;
+    height: 115%;
     background-color: blue;
 }
 
@@ -131,7 +136,7 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;   
     width: 90%;
     margin-left: 5%;
-    margin-top: 40%;
+    margin-top: 20%;
     /* background-color: brown ; */
     height: 5%;
 }
@@ -139,8 +144,8 @@
 .tileZone2 {
     /* display: flex; */
     /* align-items: center; */
-    margin-top: 15%;
-    height:85%;
+    margin-top: 10%;
+    height: 115%;
     width: 100%;
     justify-content: center;
     flex-wrap: wrap;
