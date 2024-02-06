@@ -20,14 +20,14 @@ function ConfirmationModal(props) {
     let formattedDate = getToday(deleted);
 
     let dataPackage = {
-      slug: selectedBlogSlug,
+      slug: selectedBlogSlug.slug,
       updated_at: formattedDate,
       deleted_at: formattedDate,
     };
 
-    let removedBlog = await softDeleteBlog(selectedBlogSlug, dataPackage);
+    let removedBlog = await softDeleteBlog(selectedBlogSlug.slug, dataPackage);
     if (removedBlog) {
-      setMessage("Your New Blog was sucessfully Deleted");
+      setMessage(`Your ${selectedBlogSlug.title} was sucessfully Deleted`);
       setConfirmationType(1);
     } else {
       setConfirmationType(1);
@@ -49,9 +49,7 @@ function ConfirmationModal(props) {
 
   return (
     <div className="modalConfirmContainer">
-      {/* <div className="topSection"> */}
         <h3 className="tileTextConfirm">{message}</h3>
-      {/* </div> */}
 
       {confirmationType === 1 ? (
         <div className="submitSectionConfirm">

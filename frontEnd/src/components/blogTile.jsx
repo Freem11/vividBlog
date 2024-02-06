@@ -10,7 +10,7 @@ function BlogTile(props) {
   );
 
   const setupSingleBlog = () => {
-    setSelectedBlogSlug(blogInfo.slug);
+    setSelectedBlogSlug(blogInfo);
 
     if(singleBlogYCoord === undefined){
       animateSingleBlogModal();

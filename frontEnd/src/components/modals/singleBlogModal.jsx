@@ -21,7 +21,7 @@ function SingleBlogModal(props) {
   const [relatedBlogs, setRelatedBlogs] = useState([]);
 
   const getSingleBlogBySlug = async () => {
-    let singleBlog = await getSingleBlog(selectedBlogSlug);
+    let singleBlog = await getSingleBlog(selectedBlogSlug.slug);
     if (singleBlog) {
       setSelectedBlog(singleBlog);
     }
