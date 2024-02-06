@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import BlogTile from "../blogTile";
 import xButton from "../../images/close.png";
 import "./singleBlogModal.css";
+import "../general.css"
 import { SelectedSingleBlogContext } from "../contexts/selectedBlogContext";
 import { MessageContext } from "../contexts/messageContext";
 import { ConfirmationTypeContext } from "../contexts/confirmationTypeContext";
@@ -50,32 +51,21 @@ function SingleBlogModal(props) {
   return (
     <div className="modalBodyContainer" >
     
-      <div className="xBtn" onClick={() => animateSingleBlogModal()}>
+      <div className="roundButton" onClick={() => animateSingleBlogModal()}>
         <img
           src={xButton}
           style={{
-            height: "3vw",
-            width: "3vw",
-            marginLeft: "1vw",
+            height: "2vw",
+            width: "2vw",
           }}
         />
       </div>
       <div className="topSection" >
-        <div className="topLineBox">
-        <img
-        src={`./pics/${selectedBlog.image}`}
-        width={"100%"}
-        style={{
-          objectFit: "cover",
-          marginTop: "-5%",
-          marginLeft: "-10vw",
-          zIndex: 0
-        }}
-      />
-        <h3 className="headerTextShow">{selectedBlog.title}</h3>
-        <div onClick={() => delteConfirm()} className="deleteBlogButton">
-        <p className="deleteText">Delete</p>
-        </div>
+        <div className="topLineBox" style={{backgroundImage: `url(./pics/${selectedBlog.image})`,backgroundPositionY: "-0%",  backgroundSize: "cover", resize: "both"}}>
+          <h3 className="headerText singleBlog">{selectedBlog.title}</h3>
+          <div onClick={() => delteConfirm()} className="deleteBlogBox">
+            <p className="button cancel">Delete</p>
+          </div>
         </div>
         
         <p className="blogContentText">{selectedBlog.content}</p>

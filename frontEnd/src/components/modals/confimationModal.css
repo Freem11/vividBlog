@@ -1,15 +1,3 @@
-.modalConfirmContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* justify-content: center; */
-    margin-left: 2vw;
-    margin-top: 2vh;
-    width: 46vw;
-    height: 36vh;
-    border-radius: 0.5em;
-    background-color: blue;
-}
 
 .tileTextConfirm{
     padding: 4vw;
@@ -18,48 +6,4 @@
     text-align: center;
     font-size: 1.5em;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
-}
-
-.submitSectionConfirm{
-    padding-bottom: 8vw;
-}
-
-.submitSectionConfirm2{
-    display: flex;
-    justify-content: space-evenly;
-    padding-bottom: 5vh;
-    width: 80%;
-    /* background-color: khaki; */
-}
-
-.submitBtnConfirm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background-color: green;
-    width: 15vw;
-    height: 5vh;
-    font-size: 2vw;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    border-radius: 1rem;
-    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
-    cursor: pointer;
-}
-
-.cancelBtnConfirm {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background-color: maroon;
-  width: 15vw;
-  height: 5vh;
-  font-size: 2vw;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
-  border-radius: 1rem;
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
-  cursor: pointer;
 }

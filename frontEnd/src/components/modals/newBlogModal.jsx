@@ -7,6 +7,7 @@ import { createNewBlog } from "../../../fetchRequests/blogRoutes";
 import { addPhoto, getPhoto } from "../../../fetchRequests/photoRoutes";
 import xButton from "../../images/close.png";
 import "./singleBlogModal.css";
+import "../general.css"
 
 function NewBlogModal(props) {
   const { animateNewBlogModal, animateSuccessModal } = props;
@@ -131,15 +132,14 @@ function NewBlogModal(props) {
   console.log("photo?", photoFile, newBlogInfo);
 
   return (
-    <div className="modalBodyContainerCreate">
-      <h1 className="headerTextCreate">Create a new blog</h1>
-      <div className="xBtn2" onClick={() => handleClose()}>
+    <div className="modalBodyContainer createModal">
+      <h1 className="headerText">Create a new blog</h1>
+      <div className="roundButton" onClick={() => handleClose()}>
         <img
           src={xButton}
           style={{
-            height: "3vw",
-            width: "3vw",
-            marginLeft: "1vw",
+            height: "2vw",
+            width: "2vw",
           }}
         />
       </div>
@@ -188,12 +188,6 @@ function NewBlogModal(props) {
                 disabled="true"
               />
             </div>
-
-            {/* {photoPath !== null && ( */}
-            {/* <div className="pickie">
-              <img src={photoPath} height="100%" className="picHolder"></img>
-            </div> */}
-            {/* )} */}
           </div>
         </div>
 
@@ -211,12 +205,12 @@ function NewBlogModal(props) {
         </div>
       </div>
 
-      <div className="submitSection">
-        <div className="submitBtn" onClick={() => handleSubmit()}>
+      <div className="submitSection two-buttons">
+        <div className="button" onClick={() => handleSubmit()}>
           <p>Post Blog</p>
         </div>
 
-        <div className="cancelBtn" onClick={() => handleClose()}>
+        <div className="button cancel" onClick={() => handleClose()}>
           <p>Cancel Blog Post</p>
         </div>
       </div>

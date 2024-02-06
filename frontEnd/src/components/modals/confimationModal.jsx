@@ -1,6 +1,7 @@
 import React from "react";
 import { useContext, useEffect, useState } from "react";
 import "./confimationModal.css";
+import "../general.css"
 import { MessageContext } from "../contexts/messageContext";
 import { SelectedSingleBlogContext } from "../contexts/selectedBlogContext";
 import { ConfirmationTypeContext } from "../contexts/confirmationTypeContext";
@@ -48,21 +49,21 @@ function ConfirmationModal(props) {
   };
 
   return (
-    <div className="modalConfirmContainer">
+    <div className="modalBodyContainer confirmationModal">
         <h3 className="tileTextConfirm">{message}</h3>
 
       {confirmationType === 1 ? (
-        <div className="submitSectionConfirm">
-          <div className="submitBtnConfirm" onClick={() => cleanupModals()}>
+        <div className="submitSection">
+          <div className="button" onClick={() => cleanupModals()}>
             <p>Ok</p>
           </div>
         </div>
       ) : (
-        <div className="submitSectionConfirm2">
-          <div className="submitBtn" onClick={() => softRemoveBlog()}>
+        <div className="submitSection two-buttons">
+          <div className="button" onClick={() => softRemoveBlog()}>
             <p>Confirm</p>
           </div>
-          <div className="cancelBtnConfirm" onClick={() => animateSuccessModal()}>
+          <div className="button cancel" onClick={() => animateSuccessModal()}>
             <p>Cancel</p>
           </div>
         </div>

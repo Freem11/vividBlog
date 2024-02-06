@@ -75,8 +75,8 @@ function BlogSearch(props) {
           value={limits.text}
           onChange={handleChange}
         />
-        <div onClick={() => animateNewBlogModal()} className="newBlogButton">
-          <p className="ComposeButton">Compose</p>
+        <div onClick={() => animateNewBlogModal()}>
+          <p className="button">Compose</p>
         </div>
       </div>
 
