@@ -27,7 +27,7 @@ function ConfirmationModal(props) {
 
     let removedBlog = await softDeleteBlog(selectedBlogSlug.slug, dataPackage);
     if (removedBlog) {
-      setMessage(`Your ${selectedBlogSlug.title} was sucessfully Deleted`);
+      setMessage(`${selectedBlogSlug.title} was sucessfully Deleted`);
       setConfirmationType(1);
     } else {
       setConfirmationType(1);
