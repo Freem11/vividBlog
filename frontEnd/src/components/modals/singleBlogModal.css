@@ -5,12 +5,10 @@
     align-items: center;
     justify-content: space-between;
     height: 25vh;
-    background-color: blueviolet;
 }
 
-.deleteBlogBox {
+.deleteButtonBox {
     margin-right: 2vw;
-
 }
 
 .blogContentText{
@@ -26,7 +24,6 @@
     width: 100%;
     height: 100%;
     margin-top: 0%;
-    /* background-color: blueviolet; */
 }
 
 .lowSection {
@@ -38,19 +35,16 @@
     background-color: blue;
 }
 
-.tileText2 {
-    font-size: 2.5vw;
+.otherLikes {
+    font-size: 2vw;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;   
     width: 90%;
     margin-left: 5%;
-    margin-top: 20%;
-    /* background-color: brown ; */
+    margin-top: 50%;
     height: 5%;
 }
 
 .tileZone2 {
-    /* display: flex; */
-    /* align-items: center; */
     margin-top: 10%;
     height: 115%;
     width: 100%;
@@ -58,8 +52,6 @@
     flex-wrap: wrap;
     flex-direction: column;
     overflow: hidden;
-    /* background-color: pink; */
-    /* margin-top: -4vh; */
 }
 
 .midSection{
@@ -70,7 +62,6 @@
     margin-top: 1vh;
     width: 100%;
     height: 50vh;
-    /* background-color: green; */
 }
 
 .leftSide {
@@ -83,106 +74,47 @@
 }
 
 .rightSide{
-    margin-right: 4vw;
+    margin-right: 8vw;
     width: 50%;
-
-}
-
-.inputHodler {
-    margin-top: 5vh;
-    margin-left: 130px;
 }
 
 .inputContainer {
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
-    /* justify-content: center; */
     margin-top: 5vh;
     margin-left: 5vw;
     height: 100%;
     width: 100%;
-    /* background-color: green; */
 }
 
-.inputContainer2 {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    /* justify-content: center; */
-    /* margin-left: 9vw; */
-    margin-top: 0vh;
-    margin-left: 0vh;
-    height: 100%;
-    width: 100%;
-    /* background-color: lightslategray; */
-}
-
-.inputContainer3 {
-    display: flex;
-    flex-direction: column;
-    /* align-items: center; */
-    justify-content: center;
-    /* padding-left: 140px; */
-    margin-top: 0vh;
-    /* margin-bottom: -2vh; */
-    height: 100%;
-    width: 100%;
-    /* background-color: lightslategray; */
-}
-
-.searchInput2{
+.searchInput{
     background-color: white;
     color: #000;
     border-radius: 1rem;
-    width: 26vw;
+    width: 20vw;
     height: 40px;
     max-height: 40px;
-    padding-left: 5%;
-    /* margin-left: 10%; */
+    margin-left: -1vw;
 }
 
-.searchInput3{
-    background-color: white;
-    color: #000;
-    border-radius: 1rem;
-    width: 26vw;
-    height: 40px;
-    max-height: 40px;
-    padding-left: 5%;
-    margin-left: 10%;
-}
-
-
-
-.inputContainerContent {
-    display: flex;
-    flex-direction: column;
+.inputContent {
     justify-content: center;
     align-items: center;
     height: 50vh;
     width: 100%;
 }
 
-.formLabels {
+.formLabel {
     font-size: 3vw;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
-    /* margin-right: 15vw; */
     margin-bottom: -1vh;
     padding-bottom: 2vh;
-    /* background-color: greenyellow; */
 }
 
-.formLabels1 {
-    font-size: 3vw;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
-    margin-left: 12vw;
+.content {
+   margin-bottom: 1vh; 
 }
 
-.formLabels2 {
-    font-size: 3vw;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
-}
 
 .searchInputContent {
     width: 80%;
@@ -196,60 +128,6 @@
     margin-top: -2vh;  
 }
 
-.submitSection {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 80%;
+.createForm {
     margin-top: 5vh;
-    /* background-color: pink; */
 }
-
-.submitBtn {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background-color: green;
-      width: 15vw;
-      height: 5vh;
-      font-size: 2vw;
-      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-      border-radius: 1rem;
-      box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
-      cursor: pointer;
-}
-
-.cancelBtn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background-color: maroon;
-    width: 15vw;
-    height: 5vh;
-    font-size: 2vw;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
-    border-radius: 1rem;
-    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
-    cursor: pointer;
-}
-
-.pickie {
-    display: flex;
-    width: 70%;
-    height: 20vh;
-    margin-top: -2vh;
-    margin-left: 20%;
-    border-radius: 15px;
-    border: lightblue 1px solid;
-}
-
-.picHolder {
-    align-items: center;
-    width: 100%;
-    border-radius: 15px;
-    object-fit: cover;
-} 

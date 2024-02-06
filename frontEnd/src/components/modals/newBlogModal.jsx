@@ -145,14 +145,14 @@ function NewBlogModal(props) {
       </div>
       <div className="midSection">
         <div className="leftSide">
-          <div className="inputHodler">
+          <div className="inputHolder">
             <div className="inputContainer">
-            <div className="inputContainer3">
-              <p className="formLabels">Title:</p>
+            <div className="inputContainerTitle">
+              <p className="formLabel">Title:</p>
               <input
                 type="text"
                 name="title"
-                className="searchInput2"
+                className="searchInput"
                 value={newBlogInfo.title}
                 onChange={handleChange}
               />
@@ -163,8 +163,8 @@ function NewBlogModal(props) {
            
 
             <div className="inputContainer">
-            <div className="inputContainer2">
-            <p className="formLabels">Image:</p>
+            <div className="inputContainerTitle inputImage">
+            <p className="formLabel">Image:</p>
               <input
                 type="file"
                 name="image"
@@ -182,7 +182,7 @@ function NewBlogModal(props) {
             <input
                 type="text"
                 name="hyperlink"
-                className="searchInput2"
+                className="searchInput"
                 value={newBlogInfo.image}
                 onChange={handleChange}
                 disabled="true"
@@ -192,8 +192,8 @@ function NewBlogModal(props) {
         </div>
 
         <div className="rightSide">
-          <div className="inputContainerContent">
-            <p className="formLabels2">Enter Your Content:</p>
+          <div className="inputContainer inputContent">
+            <p className="formLabel content">Enter Your Content:</p>
             <textarea
               type="text"
               name="content"
@@ -205,7 +205,7 @@ function NewBlogModal(props) {
         </div>
       </div>
 
-      <div className="submitSection two-buttons">
+      <div className="submitSection two-buttons createForm">
         <div className="button" onClick={() => handleSubmit()}>
           <p>Post Blog</p>
         </div>

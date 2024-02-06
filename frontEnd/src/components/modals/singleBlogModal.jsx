@@ -63,7 +63,7 @@ function SingleBlogModal(props) {
       <div className="topSection" >
         <div className="topLineBox" style={{backgroundImage: `url(./pics/${selectedBlog.image})`,backgroundPositionY: "-0%",  backgroundSize: "cover", resize: "both"}}>
           <h3 className="headerText singleBlog">{selectedBlog.title}</h3>
-          <div onClick={() => delteConfirm()} className="deleteBlogBox">
+          <div onClick={() => delteConfirm()} className="deleteButtonBox">
             <p className="button cancel">Delete</p>
           </div>
         </div>
@@ -72,7 +72,7 @@ function SingleBlogModal(props) {
       </div>
 
       <div className="lowSection">
-        <h4 className="tileText2">Other blogs you may like</h4>
+        <h4 className="otherLikes">Other blogs you may like</h4>
         <div className="tileZone2">
           {relatedBlogs &&
             relatedBlogs.map((blog) => {
