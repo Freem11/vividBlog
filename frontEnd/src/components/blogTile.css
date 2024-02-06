@@ -1,53 +1,28 @@
 .tile {
-    /* display: flex; */
+    display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    height: 10vh;
+    /* width: 10vw; */
     padding: 1em;
     justify-content: flex-start;
-    align-items: baseline; 
     background-color: white;
     border-radius: 1rem;
     margin: 1vw;
-    max-height: 16vh;
     cursor: pointer;
 }
 
 .tileTopRow {
-    /* background-color: mediumblue; */
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
-    /* flex-wrap: wrap; */
-    /* justify-content: center; */
+
 }
 
 .tileText {
-    font-size: 1em;
+    margin-top: -1vh;
+    font-size: 1.5vw;
     max-width: 16vw;
     font-weight: bold;
-    color: #000;
+    color: white;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    /* background-color: maroon; */
-}
-
-.dateText {
-    font-size: 1em;
-    color: #000;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    /* background-color: green; */
-}
-
-.deleteBlogButton{
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background-color: maroon;
-    border-radius: 1rem;
-    margin-top: 0.5vh;
-    margin-left: 24vw;
-    height: 1.5vh;
-    padding: 0.75vw;
-    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
 }

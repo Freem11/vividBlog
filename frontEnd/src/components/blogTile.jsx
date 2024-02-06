@@ -25,15 +25,15 @@ function BlogTile(props) {
   let trimmed = blogInfo.published_at.substring(0,10)
   
   return (
-    <div className="tile" onClick={() => setupSingleBlog()}>
-       <img
+    <div className="tile" onClick={() => setupSingleBlog()} style={{backgroundImage: `url(./pics/${blogInfo.image})`,backgroundPositionY: "-0%",  backgroundSize: "cover", resize: "both"}}>
+       {/* <img
         src={`./pics/${blogInfo.image}`}
         width={"100vw"}
         height={"80vh"}
         style={{
           objectFit: "cover",
         }}
-      />
+      /> */}
       {/* <div className="tileTopRow"> */}
         <p className="tileText">{blogInfo.title}</p>
       {/* </div> */}
