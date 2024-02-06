@@ -70,6 +70,7 @@
     width: 10vw;
     height: 2vh;
     z-index: 10;
+    cursor: pointer;
 }
 
 .deleteText{
@@ -98,6 +99,7 @@
     top: 3vh;
     left: 71vw;
     box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
 }
 
 .xBtn2 {
@@ -113,6 +115,7 @@
     left: 70vw;
     color: #000;
     box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
 }
 
 .topSection{
@@ -170,6 +173,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    /* background-color: greenyellow; */
 
 }
 
@@ -179,20 +183,20 @@
 }
 
 .inputHodler {
-    /* margin-top: 3vh;
-    margin-bottom: -5vh; */
-
+    margin-top: 5vh;
+    margin-left: 130px;
 }
 
 .inputContainer {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    /* align-items: center; */
+    /* justify-content: center; */
     margin-top: 5vh;
+    margin-left: 5vw;
     height: 100%;
     width: 100%;
-    /* background-color: lightslategray; */
+    /* background-color: green; */
 }
 
 .inputContainer2 {
@@ -200,13 +204,39 @@
     flex-direction: row;
     align-items: center;
     /* justify-content: center; */
+    /* margin-left: 9vw; */
     margin-top: 0vh;
+    margin-left: 0vh;
+    height: 100%;
+    width: 100%;
+    /* background-color: lightslategray; */
+}
+
+.inputContainer3 {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    /* padding-left: 140px; */
+    margin-top: 0vh;
+    /* margin-bottom: -2vh; */
     height: 100%;
     width: 100%;
     /* background-color: lightslategray; */
 }
 
 .searchInput2{
+    background-color: white;
+    color: #000;
+    border-radius: 1rem;
+    width: 26vw;
+    height: 40px;
+    max-height: 40px;
+    padding-left: 5%;
+    /* margin-left: 10%; */
+}
+
+.searchInput3{
     background-color: white;
     color: #000;
     border-radius: 1rem;
@@ -231,15 +261,16 @@
 .formLabels {
     font-size: 3vw;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
-    margin-right: 15vw;
+    /* margin-right: 15vw; */
     margin-bottom: -1vh;
     padding-bottom: 2vh;
+    /* background-color: greenyellow; */
 }
 
 .formLabels1 {
     font-size: 3vw;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
-    margin-left: 10vw;
+    margin-left: 12vw;
 }
 
 .formLabels2 {
@@ -281,6 +312,7 @@
       font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
       border-radius: 1rem;
       box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+      cursor: pointer;
 }
 
 .cancelBtn {
@@ -296,6 +328,7 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
     border-radius: 1rem;
     box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
 }
 
 .pickie {

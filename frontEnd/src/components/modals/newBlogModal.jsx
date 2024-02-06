@@ -2,6 +2,7 @@ import React from "react";
 import { useContext, useEffect, useState } from "react";
 import { getToday } from "../../helpers/dateFormatingHelper";
 import { MessageContext } from "../contexts/messageContext";
+import { ConfirmationTypeContext } from "../contexts/confirmationTypeContext";
 import { createNewBlog } from "../../../fetchRequests/blogRoutes";
 import { addPhoto, getPhoto } from "../../../fetchRequests/photoRoutes";
 import xButton from "../../images/close.png";
@@ -12,7 +13,9 @@ function NewBlogModal(props) {
   const { message, setMessage } = useContext(MessageContext);
   const [photoFile, setPhotoFile] = useState(null);
   const [photoPath, setPhotoPath] = useState(null);
-
+  const { confirmationType, setConfirmationType } = useContext(
+    ConfirmationTypeContext
+  );
   // useEffect(() => {
   //   setPhotoPath(`./pics/${photoFile}`);
   // }, [photoFile]);
@@ -87,6 +90,7 @@ function NewBlogModal(props) {
   };
 
   const handleSubmit = async (e) => {
+    setConfirmationType(1)
     let slugCreate = Math.random().toString(36);
     let created = new Date(Date.now()); //toString()
     let formattedDate = getToday(created);
@@ -143,6 +147,7 @@ function NewBlogModal(props) {
         <div className="leftSide">
           <div className="inputHodler">
             <div className="inputContainer">
+            <div className="inputContainer3">
               <p className="formLabels">Title:</p>
               <input
                 type="text"
@@ -151,24 +156,42 @@ function NewBlogModal(props) {
                 value={newBlogInfo.title}
                 onChange={handleChange}
               />
+              </div>
             </div>
 
+            
+           
+
+            <div className="inputContainer">
             <div className="inputContainer2">
-              <p className="formLabels1">Image:</p>
+            <p className="formLabels">Image:</p>
               <input
                 type="file"
                 name="image"
                 style={{
                   color: "transparent",
-                  marginLeft: "4vw",
+                  marginLeft: "3vw",
+                  marginTop: "3vh",
+                  // width: "10vw",
+                  // height: "2vh"
                 }}
                 onChange={handleChange}
               />
+               </div>
+            <input
+                type="text"
+                name="hyperlink"
+                className="searchInput2"
+                value={newBlogInfo.image}
+                onChange={handleChange}
+                disabled="true"
+              />
             </div>
+
             {/* {photoPath !== null && ( */}
-            <div className="pickie">
+            {/* <div className="pickie">
               <img src={photoPath} height="100%" className="picHolder"></img>
-            </div>
+            </div> */}
             {/* )} */}
           </div>
         </div>

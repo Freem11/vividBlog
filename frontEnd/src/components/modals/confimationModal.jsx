@@ -38,6 +38,7 @@ function ConfirmationModal(props) {
   const cleanupModals = async () => {
     animateSuccessModal();
     setSingleBlogYCoord(0);
+    setConfirmationType(1);
     if (message === "Your Blog is still incomplete! \n Please make sure to have a Title, Image and your Content in place before submitting"){
 
     } else {
@@ -48,9 +49,9 @@ function ConfirmationModal(props) {
 
   return (
     <div className="modalConfirmContainer">
-      <div className="topSection">
+      {/* <div className="topSection"> */}
         <h3 className="tileTextConfirm">{message}</h3>
-      </div>
+      {/* </div> */}
 
       {confirmationType === 1 ? (
         <div className="submitSectionConfirm">

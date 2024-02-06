@@ -2,24 +2,26 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    margin-left: 5%;
-    margin-top: 5%;
-    width: 90%;
-    height: 90%;
+    /* justify-content: center; */
+    margin-left: 2vw;
+    margin-top: 2vh;
+    width: 46vw;
+    height: 36vh;
     border-radius: 0.5em;
     background-color: blue;
 }
 
 .tileTextConfirm{
-    padding: 3vw;
+    padding: 4vw;
+    margin-top: 0vh;
+    /* background-color: pink; */
     text-align: center;
-    font-size: 2vw;
+    font-size: 1.5em;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
 }
 
 .submitSectionConfirm{
-    padding-bottom: 5vh;
+    padding-bottom: 8vw;
 }
 
 .submitSectionConfirm2{
@@ -43,6 +45,7 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     border-radius: 1rem;
     box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
 }
 
 .cancelBtnConfirm {
@@ -58,4 +61,5 @@
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
   border-radius: 1rem;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 }

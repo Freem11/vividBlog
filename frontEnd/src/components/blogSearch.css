@@ -67,7 +67,7 @@
     flex-wrap: wrap;
     flex-direction: row;
     width: 70vw;
-    height: 50vh;
+    height: auto;
     background-color: powderblue;
     border: 0.5vw solid gray;
     border-radius: 1rem;
