@@ -1,10 +1,9 @@
 import React from "react";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { getToday } from "../../helpers/dateFormatingHelper";
 import { MessageContext } from "../contexts/messageContext";
 import { ConfirmationTypeContext } from "../contexts/confirmationTypeContext";
 import { createNewBlog } from "../../../fetchRequests/blogRoutes";
-import { addPhoto, getPhoto } from "../../../fetchRequests/photoRoutes";
 import xButton from "../../images/close.png";
 import "./singleBlogModal.css";
 import "./modal.css";
@@ -14,15 +13,8 @@ import "./headerSection.css";
 
 function NewBlogModal(props) {
   const { animateNewBlogModal, animateSuccessModal } = props;
-  const { message, setMessage } = useContext(MessageContext);
-  const [photoFile, setPhotoFile] = useState(null);
-  const [photoPath, setPhotoPath] = useState(null);
-  const { confirmationType, setConfirmationType } = useContext(
-    ConfirmationTypeContext
-  );
-  // useEffect(() => {
-  //   setPhotoPath(`./pics/${photoFile}`);
-  // }, [photoFile]);
+  const { setMessage } = useContext(MessageContext);
+  const { setConfirmationType } = useContext(ConfirmationTypeContext);
 
   const [newBlogInfo, setNewBlogInfo] = useState({
     title: "",
@@ -69,7 +61,6 @@ function NewBlogModal(props) {
       if (e.target.files[0]) {
         let image = e.target.files[0];
         let extension = image.name.split(".").pop();
-        const fileName = Date.now() + "." + extension;
 
         //uploadPhoto
         const data = new FormData();
@@ -80,13 +71,10 @@ function NewBlogModal(props) {
             body: data,
           });
           const dataReturned = await response.json();
-          setPhotoFile(dataReturned);
           setNewBlogInfo({ ...newBlogInfo, image: dataReturned });
-          setPhotoPath(`./pics/${dataReturned}`);
         } catch (err) {
           console.log("error", err);
         }
-        setPhotoPath(`./pics/${dataReturned}`);
       }
     } else {
       setNewBlogInfo({ ...newBlogInfo, [e.target.name]: e.target.value });
@@ -118,8 +106,6 @@ function NewBlogModal(props) {
 
   const handleClose = () => {
     animateNewBlogModal();
-    setPhotoFile("");
-    setPhotoPath("");
     setNewBlogInfo({
       title: "",
       slug: "",
@@ -150,13 +136,14 @@ function NewBlogModal(props) {
             <div className="inputContainer">
               <div className="inputContainerTitle inputTitle">
                 <p className="formLabel">Title:</p>
-              </div><input
-                  type="text"
-                  name="title"
-                  className="searchInput"
-                  value={newBlogInfo.title}
-                  onChange={handleChange}
-                />
+              </div>
+              <input
+                type="text"
+                name="title"
+                className="searchInput"
+                value={newBlogInfo.title}
+                onChange={handleChange}
+              />
             </div>
 
             <div className="inputContainer">

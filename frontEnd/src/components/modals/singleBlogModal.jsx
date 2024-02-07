@@ -5,22 +5,23 @@ import xButton from "../../images/close.png";
 import "./singleBlogModal.css";
 import "./submissionSection.css";
 import "./modal.css";
-import "../buttons.css"
-import "./headerSection.css"
+import "../buttons.css";
+import "./headerSection.css";
 import { SelectedSingleBlogContext } from "../contexts/selectedBlogContext";
 import { MessageContext } from "../contexts/messageContext";
 import { ConfirmationTypeContext } from "../contexts/confirmationTypeContext";
 import { getSingleBlog, getFourBlogs } from "../../../fetchRequests/blogRoutes";
 
 function SingleBlogModal(props) {
-  const { animateSingleBlogModal, animateSuccessModal, singleBlogYCoord, setSingleBlogYCoord } = props;
-  const { message, setMessage } = useContext(MessageContext);
-  const { selectedBlogSlug, setSelectedBlogSlug } = useContext(
-    SelectedSingleBlogContext
-  );
-  const { confirmationType, setConfirmationType } = useContext(
-    ConfirmationTypeContext
-  );
+  const {
+    animateSingleBlogModal,
+    animateSuccessModal,
+    singleBlogYCoord,
+    setSingleBlogYCoord,
+  } = props;
+  const { setMessage } = useContext(MessageContext);
+  const { selectedBlogSlug } = useContext(SelectedSingleBlogContext);
+  const { setConfirmationType } = useContext(ConfirmationTypeContext);
   const [selectedBlog, setSelectedBlog] = useState([]);
   const [relatedBlogs, setRelatedBlogs] = useState([]);
 
@@ -52,8 +53,7 @@ function SingleBlogModal(props) {
   };
 
   return (
-    <div className="modalBodyContainer" >
-    
+    <div className="modalBodyContainer">
       <div className="roundButton" onClick={() => animateSingleBlogModal()}>
         <img
           src={xButton}
@@ -63,14 +63,22 @@ function SingleBlogModal(props) {
           }}
         />
       </div>
-      <div className="topSection" >
-        <div className="topLineBox" style={{backgroundImage: `url(./pics/${selectedBlog.image})`,backgroundPositionY: "-0%",  backgroundSize: "cover", resize: "both"}}>
+      <div className="topSection">
+        <div
+          className="topLineBox"
+          style={{
+            backgroundImage: `url(./pics/${selectedBlog.image})`,
+            backgroundPositionY: "-0%",
+            backgroundSize: "cover",
+            resize: "both",
+          }}
+        >
           <h3 className="headerText singleBlog">{selectedBlog.title}</h3>
           <div onClick={() => delteConfirm()} className="deleteButtonBox">
             <p className="button cancel">Delete</p>
           </div>
         </div>
-        
+
         <p className="blogContentText">{selectedBlog.content}</p>
       </div>
 

@@ -20,8 +20,7 @@ function BlogSearch(props) {
   const [direction, setDirection] = useState("");
 
   const pullAllBlogs = async () => {
-
-    let sixBlogs = await getSixBlog(limits)
+    let sixBlogs = await getSixBlog(limits);
     if (sixBlogs) {
       if (sixBlogs.length === 0) {
         direction === "plus"
@@ -64,7 +63,7 @@ function BlogSearch(props) {
     setDirection("minus");
   };
 
-  let label = "Compose"
+  let label = "Compose";
 
   return (
     <div className="blogSearchContainer">
