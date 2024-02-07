@@ -20,23 +20,26 @@ function BlogSearch(props) {
   const [direction, setDirection] = useState("");
 
   const pullAllBlogs = async () => {
-    let sixBlogs = await getSixBlog(limits);
-    if (sixBlogs) {
-      if (sixBlogs.length === 0) {
-        direction === "plus"
-          ? setLimits({
-              ...limits,
-              upper: limits.upper - 6,
-              lower: limits.lower - 6,
-            })
-          : setLimits({
-              ...limits,
-              upper: limits.upper + 6,
-              lower: limits.lower + 6,
-            });
-      } else {
-        setBlogList(sixBlogs);
-      }
+    if(limits){
+      let sixBlogs = await getSixBlog(limits);
+      if (sixBlogs) {
+        if (sixBlogs.length === 0) {
+          direction === "plus"
+            ? setLimits({
+                ...limits,
+                upper: limits.upper - 6,
+                lower: limits.lower - 6,
+              })
+            : setLimits({
+                ...limits,
+                upper: limits.upper + 6,
+                lower: limits.lower + 6,
+              });
+        } else {
+          setBlogList(sixBlogs);
+        }
+    }
+   
       setDirection("");
     }
   };
