@@ -16,7 +16,7 @@ const getSingleBlog = async (selectedBlogSlug) => {
       method: "GET"
     });
     const data = await response.json();
-    return data[0];
+    return data;
   } catch (err) {
     console.log("error", err);
   }
@@ -25,10 +25,10 @@ const getSingleBlog = async (selectedBlogSlug) => {
 const getFourBlogs = async () => {
   try {
     const response = await fetch(`http://localhost:5000/related`, {
-      method: "GET"
+      method: "POST",
+      headers: { "content-type": "application/json" },
     });
     const data = await response.json();
-    console.log("fetch", data)
     return data;
   } catch (err) {
     console.log("error", err);

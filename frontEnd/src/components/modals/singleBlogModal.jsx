@@ -10,7 +10,7 @@ import "./headerSection.css";
 import { SelectedSingleBlogContext } from "../contexts/selectedBlogContext";
 import { MessageContext } from "../contexts/messageContext";
 import { ConfirmationTypeContext } from "../contexts/confirmationTypeContext";
-import { getSingleBlog, getFourBlogs } from "../../../fetchRequests/blogFetches";
+import { getSingleBlog } from "../../../fetchRequests/blogFetches";
 
 function SingleBlogModal(props) {
   const {
@@ -28,21 +28,15 @@ function SingleBlogModal(props) {
   const getSingleBlogBySlug = async () => {
     let singleBlog = await getSingleBlog(selectedBlogSlug.slug);
     if (singleBlog) {
-      setSelectedBlog(singleBlog);
-    }
-  };
-
-  const getRelatedBlogs = async () => {
-    let relatedFourBlogs = await getFourBlogs();
-    if (relatedFourBlogs) {
-      setRelatedBlogs(relatedFourBlogs);
+      setSelectedBlog(singleBlog[0][0]);
+      setRelatedBlogs(singleBlog[1]);
     }
   };
 
   useEffect(() => {
     if (selectedBlogSlug) {
       getSingleBlogBySlug();
-      getRelatedBlogs();
+      // getRelatedBlogs();
     }
   }, [selectedBlogSlug]);
 

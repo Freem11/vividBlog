@@ -5,7 +5,7 @@ cors = require("cors");
 const bodyParser = require("body-parser");
 require("dotenv").config({ path: `./.env` });
 const multer = require("multer");
-const { grabSixBlogs, grabSingleBlog, grabQuadBlogs, addNewBlog, removeBlog } = require("./routes/blogRoutes");
+const { grabSixBlogs, grabSingleBlog, addNewBlog, removeBlog } = require("./routes/blogRoutes");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -24,9 +24,6 @@ app.use("/", grabSixBlogs)
 
 //Get Single Blog
 app.use("/:slug", grabSingleBlog);
-
-//Get Four Blog
-app.use("/related", grabQuadBlogs)
 
 //Post New Blog
 app.use("/create", addNewBlog);

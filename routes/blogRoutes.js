@@ -24,18 +24,11 @@ const grabSingleBlog = router.get("/:slug", async (req, res) => {
     if (!slug || typeof slug !== "string") throw new Error("Invalid Entry");
 
     const blogs = await db.getSingleBlogBySlug(slug);
-    console.log("route", blogs);
-    res.json(blogs);
-  } catch (err) {
-    res.json("error:", err);
-  }
-});
-
-const grabQuadBlogs = router.get("/related", async (req, res) => {
-  try {
-    const blogs = await db.getFourBlogs();
-    console.log("route", blogs);
-    res.json(blogs);
+    const fourblogs = await db.getFourBlogs();
+    let arr = []
+    arr.push(blogs)
+    arr.push(fourblogs)
+    res.json(arr);
   } catch (err) {
     res.json("error:", err);
   }
@@ -100,7 +93,6 @@ const removeBlog = router.post("/delete:slug", async (req, res) => {
 module.exports = {
   grabSixBlogs,
   grabSingleBlog,
-  grabQuadBlogs,
   addNewBlog,
   removeBlog,
 };
