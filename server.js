@@ -4,8 +4,8 @@ const path = require("path");
 cors = require("cors");
 const bodyParser = require("body-parser");
 require("dotenv").config({ path: `./.env` });
-const db = require("./queries/blogQueries");
 const multer = require("multer");
+const { grabSixBlogs } = require("./routes/blogRoutes");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -20,18 +20,9 @@ app.listen(port, () => console.log("Backend server live on " + port));
 //Blog Routes
 
 //Get Pagination Blogs (6)
-app.post("/", async (req, res) => {
-  try {
-    const blogs = await db.getSixBlogs(
-      req.body.lower,
-      req.body.upper,
-      req.body.text
-    );
-    res.json(blogs);
-  } catch (err) {
-    res.json("error:", err);
-  }
-});
+
+app.use("/", grabSixBlogs)
+
 
 //Get Single Blog
 app.get("/:slug", async (req, res) => {
@@ -43,7 +34,7 @@ app.get("/:slug", async (req, res) => {
   }
 });
 
-//Get Single Blog
+//Get Four Blog
 app.post("/related", async (req, res) => {
   try {
     const blogs = await db.getFourBlogs();
