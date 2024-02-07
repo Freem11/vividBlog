@@ -26,7 +26,7 @@ app.use("/", grabSixBlogs)
 app.use("/:slug", grabSingleBlog);
 
 //Post New Blog
-app.use("/create", addNewBlog);
+app.post("/create", addNewBlog);
 
 //Soft Delete Blog
 app.post("/delete:slug", removeBlog);

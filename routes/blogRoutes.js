@@ -25,10 +25,7 @@ const grabSingleBlog = router.get("/:slug", async (req, res) => {
 
     const blogs = await db.getSingleBlogBySlug(slug);
     const fourblogs = await db.getFourBlogs();
-    let arr = []
-    arr.push(blogs)
-    arr.push(fourblogs)
-    res.json(arr);
+    res.json({blogs, fourblogs});
   } catch (err) {
     res.json("error:", err);
   }

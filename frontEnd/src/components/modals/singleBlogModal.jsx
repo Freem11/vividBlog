@@ -28,8 +28,8 @@ function SingleBlogModal(props) {
   const getSingleBlogBySlug = async () => {
     let singleBlog = await getSingleBlog(selectedBlogSlug.slug);
     if (singleBlog) {
-      setSelectedBlog(singleBlog[0][0]);
-      setRelatedBlogs(singleBlog[1]);
+      setSelectedBlog(singleBlog.blogs[0]);
+      setRelatedBlogs(singleBlog.fourblogs);
     }
   };
 
