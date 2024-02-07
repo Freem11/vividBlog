@@ -148,16 +148,15 @@ function NewBlogModal(props) {
         <div className="leftSide">
           <div className="inputHolder">
             <div className="inputContainer">
-              <div className="inputContainerTitle">
+              <div className="inputContainerTitle inputTitle">
                 <p className="formLabel">Title:</p>
-                <input
+              </div><input
                   type="text"
                   name="title"
                   className="searchInput"
                   value={newBlogInfo.title}
                   onChange={handleChange}
                 />
-              </div>
             </div>
 
             <div className="inputContainer">
@@ -169,7 +168,7 @@ function NewBlogModal(props) {
                   style={{
                     color: "transparent",
                     marginLeft: "3vw",
-                    marginBottom: "2vh",
+                    marginBottom: "0.5vh",
                     cursor: "pointer",
                   }}
                   onChange={handleChange}

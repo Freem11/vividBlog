@@ -66,8 +66,7 @@
 
 .leftSide {
     width: 50%;
-    margin-top: -14%;
-    margin-left: 1vw;
+    margin-left: 1%;
     display: flex;
     align-items: center;
     justify-content: right;
@@ -78,9 +77,12 @@
     width: 50%;
 }
 
+
 .inputContainer {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin-top: 5vh;
     margin-left: 5vw;
     height: 100%;
@@ -104,6 +106,18 @@
     height: 50vh;
     width: 100%;
 }
+.inputTitle {
+    width: 25vw;
+}
+
+.inputImage {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    width: 25vw;
+    margin-top: 0vh;
+    height: 40px;
+}
 
 .formLabel {
     font-size: 3vw;
@@ -112,21 +126,15 @@
 
 }
 
-.image {
+/* .image {
    z-index: 1;
-}
+} */
 
 .content {
    margin-bottom: 1vh; 
 }
 
-.inputImage {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    margin-top: 0vh;
-    height: 60px;
-}
+
 
 .searchInputContent {
     width: 80%;
