@@ -7,7 +7,10 @@ import { createNewBlog } from "../../../fetchRequests/blogRoutes";
 import { addPhoto, getPhoto } from "../../../fetchRequests/photoRoutes";
 import xButton from "../../images/close.png";
 import "./singleBlogModal.css";
-import "../general.css"
+import "./modal.css";
+import "./submissionSection.css";
+import "../buttons.css";
+import "./headerSection.css";
 
 function NewBlogModal(props) {
   const { animateNewBlogModal, animateSuccessModal } = props;
@@ -91,7 +94,7 @@ function NewBlogModal(props) {
   };
 
   const handleSubmit = async (e) => {
-    setConfirmationType(1)
+    setConfirmationType(1);
     let slugCreate = Math.random().toString(36);
     let created = new Date(Date.now()); //toString()
     let formattedDate = getToday(created);
@@ -115,7 +118,7 @@ function NewBlogModal(props) {
 
   const handleClose = () => {
     animateNewBlogModal();
-    setPhotoFile("") 
+    setPhotoFile("");
     setPhotoPath("");
     setNewBlogInfo({
       title: "",
@@ -128,8 +131,6 @@ function NewBlogModal(props) {
       deleted_at: "",
     });
   };
-
-  console.log("photo?", photoFile, newBlogInfo);
 
   return (
     <div className="modalBodyContainer createModal">
@@ -147,39 +148,34 @@ function NewBlogModal(props) {
         <div className="leftSide">
           <div className="inputHolder">
             <div className="inputContainer">
-            <div className="inputContainerTitle">
-              <p className="formLabel">Title:</p>
-              <input
-                type="text"
-                name="title"
-                className="searchInput"
-                value={newBlogInfo.title}
-                onChange={handleChange}
-              />
+              <div className="inputContainerTitle">
+                <p className="formLabel">Title:</p>
+                <input
+                  type="text"
+                  name="title"
+                  className="searchInput"
+                  value={newBlogInfo.title}
+                  onChange={handleChange}
+                />
               </div>
             </div>
 
-            
-           
-
             <div className="inputContainer">
-            <div className="inputContainerTitle inputImage">
-            <p className="formLabel">Image:</p>
+              <div className="inputContainerTitle inputImage">
+                <p className="formLabel image">Image:</p>
+                <input
+                  type="file"
+                  name="image"
+                  style={{
+                    color: "transparent",
+                    marginLeft: "3vw",
+                    marginBottom: "2vh",
+                    cursor: "pointer",
+                  }}
+                  onChange={handleChange}
+                />
+              </div>
               <input
-                type="file"
-                name="image"
-                style={{
-                  color: "transparent",
-                  marginLeft: "3vw",
-                  marginTop: "3vh",
-                  cursor: "pointer",
-                  // width: "10vw",
-                  // height: "2vh"
-                }}
-                onChange={handleChange}
-              />
-               </div>
-            <input
                 type="text"
                 name="hyperlink"
                 className="searchInput"

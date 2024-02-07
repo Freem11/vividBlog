@@ -21,7 +21,6 @@ app.listen(port, () => console.log("Backend server live on " + port));
 
 //Get Pagination Blogs (6)
 app.post("/", async (req, res) => {
-  
   try {
     const blogs = await db.getSixBlogs(
       req.body.lower,
@@ -36,7 +35,6 @@ app.post("/", async (req, res) => {
 
 //Get Single Blog
 app.get("/:slug", async (req, res) => {
- 
   try {
     const blogs = await db.getSingleBlogBySlug(req.params.slug);
     res.json(blogs);
@@ -57,7 +55,6 @@ app.post("/related", async (req, res) => {
 
 //Post New Blog
 app.post("/create", async (req, res) => {
-  
   try {
     const blogs = await db.addNewBlog(
       req.body.title,
@@ -76,7 +73,6 @@ app.post("/create", async (req, res) => {
 
 //Soft Delete Blog
 app.post("/delete:slug", async (req, res) => {
-
   try {
     const blogs = await db.softDeleteBlog(
       req.body.updated_at,
@@ -89,38 +85,35 @@ app.post("/delete:slug", async (req, res) => {
   }
 });
 
-
-
-
-
 //Photo Routes
 
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
-    callback(null, "./frontEnd/public/pics")
+    callback(null, "./frontEnd/public/pics");
   },
   filename: (req, file, callback) => {
-    callback(null, Date.now() + path.extname(file.originalname))
-  }
-})
+    callback(null, Date.now() + path.extname(file.originalname));
+  },
+});
 
-const upload = multer({storage: storage})
+const upload = multer({ storage: storage });
 
 let fileToSend;
 let result;
 
 //Upload Photo
-app.post("/photo/upload", upload.single('image'), async (req, res) => {
-
-  console.log("server", req.file.filename)
-  res.json(req.file.filename)
-  // res.send(req.file.filename)
-
-}, (err) => {
-  console.log("error:", err)
-});
+app.post(
+  "/photo/upload",
+  upload.single("image"),
+  async (req, res) => {
+    res.json(req.file.filename);
+  },
+  (err) => {
+    console.log("error:", err);
+  }
+);
 
 // Get Photos
- app.get("/photo/uploaad", (req, res) => {
+app.get("/photo/uploaad", (req, res) => {
   res.json(result);
 });

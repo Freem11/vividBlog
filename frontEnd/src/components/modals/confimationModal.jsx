@@ -1,7 +1,9 @@
 import React from "react";
 import { useContext, useEffect, useState } from "react";
 import "./confimationModal.css";
-import "../general.css"
+import "./submissionSection.css";
+import "./modal.css";
+import "../buttons.css"
 import { MessageContext } from "../contexts/messageContext";
 import { SelectedSingleBlogContext } from "../contexts/selectedBlogContext";
 import { ConfirmationTypeContext } from "../contexts/confirmationTypeContext";

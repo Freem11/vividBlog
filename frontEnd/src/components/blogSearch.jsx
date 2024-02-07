@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import BlogTile from "./blogTile";
 import rightArrow from "../images/right-arrow.png";
 import "./blogSearch.css";
+import "./buttons.css";
 import { getSixBlog } from "../../fetchRequests/blogRoutes";
 
 function BlogSearch(props) {

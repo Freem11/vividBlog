@@ -2,7 +2,6 @@ const { response } = require("express");
 const db = require("../database/db");
 
 const getSixBlogs = (lowerLimit, upperLimit, text) => {
-  // console.log("query", lowerLimit, upperLimit, text);
   return db
     .query(
       `SELECT 

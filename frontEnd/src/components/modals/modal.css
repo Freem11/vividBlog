@@ -1,0 +1,29 @@
+.modalBodyContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 76vw;
+    height: 76vh;
+    margin-left: 2vw;
+    margin-top: 2vh;
+    border-radius: 0.5em;
+    background-color: green;
+    overflow-y: scroll;
+}
+
+.createModal {
+    background-color: mediumblue;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+
+.confirmationModal {
+    flex-direction: column;
+    margin-left: 2vw;
+    margin-top: 2vh;
+    width: 46vw;
+    height: 36vh;
+    background-color: blue;
+    overflow: hidden;
+}

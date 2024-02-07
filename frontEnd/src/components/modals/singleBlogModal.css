@@ -94,6 +94,7 @@
     width: 20vw;
     height: 40px;
     max-height: 40px;
+    margin-top: 1vh;
     margin-left: -1vw;
 }
 
@@ -107,14 +108,25 @@
 .formLabel {
     font-size: 3vw;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
-    margin-bottom: -1vh;
-    padding-bottom: 2vh;
+    margin-bottom: 0vh;
+
+}
+
+.image {
+   z-index: 1;
 }
 
 .content {
    margin-bottom: 1vh; 
 }
 
+.inputImage {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    margin-top: 0vh;
+    height: 60px;
+}
 
 .searchInputContent {
     width: 80%;
@@ -125,7 +137,7 @@
     border-radius: 1rem;
     padding-top: 1vw;
     padding-left: 2vw;
-    margin-top: -2vh;  
+    margin-top: 0.5vh;  
 }
 
 .createForm {

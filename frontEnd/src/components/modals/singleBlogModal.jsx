@@ -3,7 +3,10 @@ import { useContext, useEffect, useState } from "react";
 import BlogTile from "../blogTile";
 import xButton from "../../images/close.png";
 import "./singleBlogModal.css";
-import "../general.css"
+import "./submissionSection.css";
+import "./modal.css";
+import "../buttons.css"
+import "./headerSection.css"
 import { SelectedSingleBlogContext } from "../contexts/selectedBlogContext";
 import { MessageContext } from "../contexts/messageContext";
 import { ConfirmationTypeContext } from "../contexts/confirmationTypeContext";

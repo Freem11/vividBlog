@@ -5,7 +5,6 @@ const getPhoto = async () => {
         headers: { "content-type": "application/json" },
       });
       const data = await response.json();
-      console.log("what", data)
       return data;
     } catch (err) {
       console.log("error", err);
@@ -13,7 +12,6 @@ const getPhoto = async () => {
   };
   
   const addPhoto = async (dataPackage) => {
-    console.log("route", dataPackage)
     try {
       const response = await fetch(`http://localhost:5000/photo/upload`, {
         method: "POST",
