@@ -3,36 +3,30 @@ A full stack (PERN) app for posting blogs, this was the coding challenge set to 
 
 # Setup
 
-Once you have it on your computer CD into the main "vividBlog" folder
-From there create a database in Postgres (download at https://www.postgresql.org/download/) 
-Once downloaded and from the same "vividblog" folder type 'psql -U postgres' or replace 'postgres' with your username to log in
-Next create a database with the command 'CREATE DATABASE your_database_name;'    'your_database_name' is the name of your database you can replace it with anything you like, for example in my case I used 'vividblog' as my database name
+Cd into "vividBlog" folder
+Login to Postgres - 'psql -U postgres username'
+Create Postgres DB  - 'CREATE DATABASE your_database_name;'
+Create Database Schema - \i schema/schema.sql;
+Seed Database - \i seeds/seeds.sql;
+Create .env file 
+Apply Database Credentials
+    DB_HOST='localhost'
+    DB_USER='your user name'
+    DB_PASSWORD='chose your own password'
+    DB_NAME='your postgres database's name'
+    DB_PORT='chose a port'
 
-Once your database has been created we can now add thw schema and seed data
-to add the schema type the following command into you database terminal:
-\i schema/schema.sql;
+In new Terminal
+Cd into "vividBlog" folder
+Install Dependencies - npm i or npm install
+Run Server - npm run dev
 
-Next seed the database using this command:
-\i seeds/seeds.sql;
+In new Terminal
+Cd into "frontEnd" folder
+Install Dependencies - npm i or npm install
+Run front end - npm run dev
 
-The database is now ready, next create a .env file in the "vividBlog" folder and and add your database credentials in the following format. You can do this via your code editor or in the terminal using the appropriate command.
-
-DB_HOST='localhost'
-DB_USER='your user name'
-DB_PASSWORD='chose your own password'
-DB_NAME='your postgres database's name'
-DB_PORT='chose a port'
-
-Next setup the server, in the terminal from the "vividBlog" folder install all required back end dependencies using 
-npm i or npm install
-Then run the server using 
-npm run dev
-
-Next open another terminal and CD into the "frontEnd" folder and repeat the previous process to install the front end dependencies and run it
-(commands are : npm i or npm install, then npm run dev )
-
-At this point you should have a working app!
-
+# Description
 
 The app is fairly simple
 On the main page you will be shown up to 6 blog tiles at a time, you can paginate through them using the chevron buttons to the left and right
