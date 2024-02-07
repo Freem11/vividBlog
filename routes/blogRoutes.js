@@ -6,9 +6,9 @@ const grabSixBlogs = router.get("/", async (req, res) => {
   const { lower, upper, text } = req.query;
 
   try {
-    // if (!lower || typeof lower !== "number") throw new Error("Invalid Entry");
-    // if (!upper || typeof upper !== "number") throw new Error("Invalid Entry");
-    // if (!text || typeof text !== "string") throw new Error("Invalid Entry");
+    if (isNaN(lower) || isNaN(upper)) throw new Error("Invalid Entry");
+    if (!upper || !lower) throw new Error("Upper and Lower limits required");
+    // if (!text) throw new Error("Invalid Entry");
 
     const blogs = await db.getSixBlogs(lower, upper, text);
     res.json(blogs);
@@ -24,7 +24,7 @@ const grabSingleBlog = router.get("/:slug", async (req, res) => {
     if (!slug || typeof slug !== "string") throw new Error("Invalid Entry");
 
     const blogs = await db.getSingleBlogBySlug(slug);
-    const fourblogs = await db.getFourBlogs();
+    const fourblogs = await db.getFourBlogs(slug);
     res.json({blogs, fourblogs});
   } catch (err) {
     res.json("error:", err);
