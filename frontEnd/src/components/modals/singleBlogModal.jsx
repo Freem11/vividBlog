@@ -10,7 +10,7 @@ import "./headerSection.css";
 import { SelectedSingleBlogContext } from "../contexts/selectedBlogContext";
 import { MessageContext } from "../contexts/messageContext";
 import { ConfirmationTypeContext } from "../contexts/confirmationTypeContext";
-import { getSingleBlog, getFourBlogs } from "../../../fetchRequests/blogRoutes";
+import { getSingleBlog, getFourBlogs } from "../../../fetchRequests/blogFetches";
 
 function SingleBlogModal(props) {
   const {

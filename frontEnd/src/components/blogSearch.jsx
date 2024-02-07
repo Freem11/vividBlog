@@ -5,7 +5,7 @@ import BlogTile from "./blogTile";
 import rightArrow from "../images/right-arrow.png";
 import "./blogSearch.css";
 import "./buttons.css";
-import { getSixBlog } from "../../fetchRequests/blogRoutes";
+import { getSixBlog } from "../../fetchRequests/blogFetches";
 
 function BlogSearch(props) {
   const {

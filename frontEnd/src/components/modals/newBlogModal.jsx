@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import { getToday } from "../../helpers/dateFormatingHelper";
 import { MessageContext } from "../contexts/messageContext";
 import { ConfirmationTypeContext } from "../contexts/confirmationTypeContext";
-import { createNewBlog } from "../../../fetchRequests/blogRoutes";
+import { createNewBlog } from "../../../fetchRequests/blogFetches";
 import xButton from "../../images/close.png";
 import "./singleBlogModal.css";
 import "./modal.css";
@@ -167,7 +167,7 @@ function NewBlogModal(props) {
                 className="searchInput"
                 value={newBlogInfo.image}
                 onChange={handleChange}
-                disabled="true"
+                disabled={true}
               />
             </div>
           </div>

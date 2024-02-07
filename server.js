@@ -5,7 +5,7 @@ cors = require("cors");
 const bodyParser = require("body-parser");
 require("dotenv").config({ path: `./.env` });
 const multer = require("multer");
-const { grabSixBlogs } = require("./routes/blogRoutes");
+const { grabSixBlogs, grabSingleBlog, grabQuadBlogs, addNewBlog, removeBlog } = require("./routes/blogRoutes");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -22,58 +22,17 @@ app.listen(port, () => console.log("Backend server live on " + port));
 //Get Pagination Blogs (6)
 app.use("/", grabSixBlogs)
 
-
 //Get Single Blog
-app.get("/:slug", async (req, res) => {
-  try {
-    const blogs = await db.getSingleBlogBySlug(req.params.slug);
-    res.json(blogs);
-  } catch (err) {
-    res.json("error:", err);
-  }
-});
+app.use("/:slug", grabSingleBlog);
 
 //Get Four Blog
-app.post("/related", async (req, res) => {
-  try {
-    const blogs = await db.getFourBlogs();
-    res.json(blogs);
-  } catch (err) {
-    res.json("error:", err);
-  }
-});
+app.use("/related", grabQuadBlogs)
 
 //Post New Blog
-app.post("/create", async (req, res) => {
-  try {
-    const blogs = await db.addNewBlog(
-      req.body.title,
-      req.body.slug,
-      req.body.content,
-      req.body.image,
-      req.body.published_at,
-      req.body.created_at,
-      req.body.updated_at
-    );
-    res.json(blogs);
-  } catch (err) {
-    res.status("error:", err);
-  }
-});
+app.use("/create", addNewBlog);
 
 //Soft Delete Blog
-app.post("/delete:slug", async (req, res) => {
-  try {
-    const blogs = await db.softDeleteBlog(
-      req.body.updated_at,
-      req.body.updated_at,
-      req.body.slug
-    );
-    res.json(blogs);
-  } catch (err) {
-    res.status("error:", err);
-  }
-});
+app.post("/delete:slug", removeBlog);
 
 //Photo Routes
 
@@ -103,7 +62,3 @@ app.post(
   }
 );
 
-// Get Photos
-app.get("/photo/uploaad", (req, res) => {
-  res.json(result);
-});

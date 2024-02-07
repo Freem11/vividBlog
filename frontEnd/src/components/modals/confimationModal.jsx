@@ -8,7 +8,7 @@ import { MessageContext } from "../contexts/messageContext";
 import { SelectedSingleBlogContext } from "../contexts/selectedBlogContext";
 import { ConfirmationTypeContext } from "../contexts/confirmationTypeContext";
 import { getToday } from "../../helpers/dateFormatingHelper";
-import { softDeleteBlog } from "../../../fetchRequests/blogRoutes";
+import { softDeleteBlog } from "../../../fetchRequests/blogFetches";
 
 function ConfirmationModal(props) {
   const { animateSuccessModal, setSingleBlogYCoord, setNewBlogYCoord } = props;

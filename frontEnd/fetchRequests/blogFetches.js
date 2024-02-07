@@ -1,9 +1,7 @@
 const getSixBlog = async (limits) => {
   try {
-    const response = await fetch("http://localhost:5000/", {
-      method: "POST",
-      body: JSON.stringify(limits),
-      headers: { "content-type": "application/json" },
+    const response = await fetch(`http://localhost:5000/?upper=${limits.upper}&lower=${limits.lower}&text=${limits.text}`, {
+      method: "GET"
     });
     const data = await response.json();
     return data;
@@ -15,8 +13,7 @@ const getSixBlog = async (limits) => {
 const getSingleBlog = async (selectedBlogSlug) => {
   try {
     const response = await fetch(`http://localhost:5000/${selectedBlogSlug}`, {
-      method: "GET",
-      headers: { "content-type": "application/json" },
+      method: "GET"
     });
     const data = await response.json();
     return data[0];
@@ -28,10 +25,10 @@ const getSingleBlog = async (selectedBlogSlug) => {
 const getFourBlogs = async () => {
   try {
     const response = await fetch(`http://localhost:5000/related`, {
-      method: "POST",
-      headers: { "content-type": "application/json" },
+      method: "GET"
     });
     const data = await response.json();
+    console.log("fetch", data)
     return data;
   } catch (err) {
     console.log("error", err);

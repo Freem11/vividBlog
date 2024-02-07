@@ -2,7 +2,6 @@ const { response } = require("express");
 const db = require("../database/db");
 
 const getSixBlogs = (lowerLimit, upperLimit, text) => {
-  console.log("databse", lowerLimit, upperLimit, text)
   return db
     .query(
       `SELECT 
@@ -55,6 +54,7 @@ getSixBlogs();
 
 // need a WHERE deleted IS NULL and published IS NOT NULL
 const getFourBlogs = () => {
+  console.log("pinged?")
   return db
     .query(`SELECT
      * 
@@ -69,6 +69,7 @@ const getFourBlogs = () => {
       )x 
       ORDER BY published_at DESC`)
     .then((response) => {
+      console.log("pgn", response.rows)
       return response.rows;
     })
     .catch((error) => {
