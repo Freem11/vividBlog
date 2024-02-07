@@ -37,7 +37,9 @@ Cd into "frontEnd" folder
 
 Install Dependencies - npm i or npm install
 
-Run front end - npm run dev
+Run front end (Development Environemnt) - npm run dev
+
+Run front end (Production Environemnt) - npm run build then npm run preview (server must still be locally running)
 
 # Description
 
