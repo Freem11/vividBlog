@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const db = require("../queries/blogQueries");
 
-const grabSixBlogs = router.post("/api/session", (req, res) => {
+const grabSixBlogs = router.get("/", (req, res) => {
+    console.log("route", req.body)
     try {
         const blogs = db.getSixBlogs(
           req.body.lower,

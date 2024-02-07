@@ -20,7 +20,6 @@ app.listen(port, () => console.log("Backend server live on " + port));
 //Blog Routes
 
 //Get Pagination Blogs (6)
-
 app.use("/", grabSixBlogs)
 
 
